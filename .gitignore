@@ -1,0 +1,42 @@
+# ==========================================
+# 1. Binarios Compilados
+# ==========================================
+# Go compila el código en un archivo ejecutable. Estos binarios son pesados, 
+# específicos de tu sistema operativo y nunca deben ir al repositorio.
+/bin/
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+# Si compilas tu app con 'go build -o api-global', ignora ese archivo:
+api-global
+
+# ==========================================
+# 2. Archivos de Entorno y Secretos (¡CRÍTICO!)
+# ==========================================
+# Aquí viven las contraseñas de PostgreSQL, tokens y puertos.
+.env
+*.env.local
+*.env.*.local
+
+# ==========================================
+# 3. Archivos de Pruebas y Reportes de Go
+# ==========================================
+*.test
+*.out
+coverage.txt
+
+# ==========================================
+# 4. Directorio de dependencias locales (Opcional)
+# ==========================================
+# Si en el futuro usas 'go mod vendor' para guardar dependencias localmente
+vendor/
+
+# ==========================================
+# 5. Archivos del Sistema Operativo y Editores
+# ==========================================
+.DS_Store
+.vscode/
+.idea/
+*.swp
