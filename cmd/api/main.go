@@ -1,6 +1,8 @@
 package main
 
 import (
+	"api-global/internal/config"
+	"api-global/internal/database"
 	"fmt"
 	"log"
 	"net/http"
@@ -10,29 +12,30 @@ import (
 )
 
 func main() {
-	// 1. Inicializar el enrutador chi
-	r := chi.NewRouter()
+	// 1. Cargar configuración
+	cfg := config.LoadConfig()
 
-	// 2. Añadir Middlewares globales integrados en chi
-	r.Use(middleware.Logger)    // Registra cada petición HTTP en la consola
-	r.Use(middleware.Recoverer) // Evita que la API se caiga si hay un "panic" (error crítico)
-
-	r.Get("/", func(w http.ResponseWriter, r *http.Request) {
-		w.Write([]byte("¡Gogeta!!"))
-	})
-
-	// 3. Definir una ruta de prueba (Healthcheck)
-	r.Get("/ping", func(w http.ResponseWriter, r *http.Request) {
-		w.Write([]byte("¡La API Global está viva!"))
-	})
-
-	// 4. Iniciar el servidor
-	puerto := ":8080"
-	fmt.Printf("Servidor corriendo en el puerto %s\n", puerto)
-
-	// ListenAndServe es de la librería estándar de Go, pero le pasamos 'r' (nuestro router chi)
-	err := http.ListenAndServe(puerto, r)
+	// 2. Conectar a Base de Datos
+	db, err := database.InitDB(cfg)
 	if err != nil {
-		log.Fatalf("Error al iniciar el servidor: %v", err)
+		log.Fatalf("No se pudo iniciar la base de datos: %v", err)
+	}
+	// (Opcional) Guardar db en una variable global o inyectarla luego en los handlers
+	_ = db
+
+	// 3. Inicializar Router
+	r := chi.NewRouter()
+	r.Use(middleware.Logger)
+	r.Use(middleware.Recoverer)
+
+	r.Get("/ping", func(w http.ResponseWriter, r *http.Request) {
+		w.Write([]byte("¡La API Global está conectada a Docker y Postgres!"))
+	})
+
+	// 4. Iniciar Servidor
+	log.Printf("🚀 Servidor corriendo en el puerto %s", cfg.Port)
+	err = http.ListenAndServe(fmt.Sprintf(":%s", cfg.Port), r)
+	if err != nil {
+		log.Fatalf("Error en el servidor: %v", err)
 	}
 }
