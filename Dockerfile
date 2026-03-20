@@ -27,6 +27,9 @@ WORKDIR /root/
 COPY --from=builder /app/main .
 COPY --from=builder /app/.env . 
 
+# Copiamos las migraciones y seeds
+COPY --from=builder /app/internal/database/seeds ./internal/database/seeds
+
 # Exponemos el puerto interno (debe coincidir con el de tu .env)
 EXPOSE 8080
 

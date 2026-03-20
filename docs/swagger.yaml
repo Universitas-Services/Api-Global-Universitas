@@ -1,0 +1,174 @@
+basePath: /
+definitions:
+  dto.CreateUCAUURequest:
+    properties:
+      valor:
+        description: validate:"required,gt=0" asegura que el campo venga y sea mayor
+          a cero
+        example: 35.5
+        type: number
+    required:
+    - valor
+    type: object
+  dto.EstadoResponse:
+    properties:
+      id:
+        example: 1
+        type: integer
+      nombre:
+        example: Lara
+        type: string
+    type: object
+  dto.GenericResponse:
+    properties:
+      data: {}
+      message:
+        example: Operación exitosa
+        type: string
+    type: object
+  dto.MunicipioResponse:
+    properties:
+      estado_id:
+        example: 1
+        type: integer
+      id:
+        example: 10
+        type: integer
+      nombre:
+        example: Iribarren
+        type: string
+    type: object
+  dto.ParroquiaResponse:
+    properties:
+      id:
+        example: 50
+        type: integer
+      municipio_id:
+        example: 10
+        type: integer
+      nombre:
+        example: Catedral
+        type: string
+    type: object
+  dto.UCAUUResponse:
+    properties:
+      fecha:
+        example: "2026-03-20T10:00:00Z"
+        type: string
+      valor:
+        example: 35.5
+        type: number
+    type: object
+host: localhost:8080
+info:
+  contact:
+    name: Jose
+  description: API centralizada para indicadores económicos y territoriales.
+  title: API Global Universitas
+  version: "1.0"
+paths:
+  /api/v1/economia/ucauu:
+    get:
+      description: Retorna el último valor registrado de la unidad UCAUU
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.UCAUUResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/dto.GenericResponse'
+      summary: Obtener última UCAUU
+      tags:
+      - Economia
+    post:
+      consumes:
+      - application/json
+      description: Permite registrar el valor de la UCAUU del día actual. Si ya existe,
+        lo actualiza.
+      parameters:
+      - description: Valor de la UCAUU
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.CreateUCAUURequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/dto.GenericResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/dto.GenericResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/dto.GenericResponse'
+      summary: Registrar o Actualizar UCAUU
+      tags:
+      - Economia
+  /api/v1/territorio/estados:
+    get:
+      description: Retorna la lista de todos los estados de Venezuela
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/dto.EstadoResponse'
+            type: array
+      summary: Obtener todos los estados
+      tags:
+      - Territorio
+  /api/v1/territorio/estados/{estado_id}/municipios:
+    get:
+      description: Retorna la lista de municipios pertenecientes a un estado específico
+      parameters:
+      - description: ID del Estado
+        in: path
+        name: estado_id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/dto.MunicipioResponse'
+            type: array
+      summary: Obtener municipios por estado
+      tags:
+      - Territorio
+  /api/v1/territorio/municipios/{municipio_id}/parroquias:
+    get:
+      description: Retorna la lista de parroquias pertenecientes a un municipio específico
+      parameters:
+      - description: ID del Municipio
+        in: path
+        name: municipio_id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/dto.ParroquiaResponse'
+            type: array
+      summary: Obtener parroquias por municipio
+      tags:
+      - Territorio
+swagger: "2.0"

@@ -8,7 +8,8 @@ services:
     ports:
       - "8080:8080"      # Mapea puerto 8080 local al 8080 del contenedor
     depends_on:
-      - db               # Espera a que la BD inicie antes de arrancar (básico)
+      - db:
+        condition: service_healthy              # Espera a que la BD inicie antes de arrancar (básico)
     environment:
       - DB_HOST=db       # ¡OJO! Aquí el host es el nombre del servicio, no 'localhost'
       - DB_USER=postgres
@@ -33,6 +34,12 @@ services:
       - postgres_data:/var/lib/postgresql/data # Persistencia de datos
     networks:
       - universitas-net
+    
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d universitas_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
 
 # Definición de volúmenes para que los datos sobrevivan al apagar Docker
 volumes:

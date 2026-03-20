@@ -1,26 +1,36 @@
 package database
 
 import (
-	"api-global/internal/config"
 	"fmt"
 	"log"
+	"time"
+
+	"api-global/internal/config"
 
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )
 
-// InitDB inicializa la conexión a PostgreSQL usando GORM
+// InitDB inicializa la conexión a PostgreSQL con sistema de reintentos
 func InitDB(cfg *config.Config) (*gorm.DB, error) {
-	// Construimos la cadena de conexión (DSN)
 	dsn := fmt.Sprintf("host=%s user=%s password=%s dbname=%s port=%s sslmode=%s",
 		cfg.DBHost, cfg.DBUser, cfg.DBPassword, cfg.DBName, cfg.DBPort, cfg.DBSSLMode)
 
-	// Abrimos la conexión
-	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
-	if err != nil {
-		return nil, fmt.Errorf("error conectando a la base de datos: %v", err)
+	var db *gorm.DB
+	var err error
+
+	// Sistema de reintentos: Intentará conectar 5 veces, esperando 2 segundos entre intentos.
+	for i := 1; i <= 5; i++ {
+		db, err = gorm.Open(postgres.Open(dsn), &gorm.Config{})
+		if err == nil {
+			log.Println("✅ Conexión a PostgreSQL establecida exitosamente")
+			return db, nil // Conexión exitosa, salimos del bucle
+		}
+
+		log.Printf("⏳ Esperando a la base de datos (Intento %d/5)...\n", i)
+		time.Sleep(2 * time.Second)
 	}
 
-	log.Println("✅ Conexión a PostgreSQL establecida exitosamente")
-	return db, nil
+	// Si después de 5 intentos falló, devolvemos el error fatal
+	return nil, fmt.Errorf("error conectando a la base de datos tras varios intentos: %v", err)
 }
