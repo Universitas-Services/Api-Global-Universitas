@@ -7,32 +7,99 @@ import (
 
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
+	"github.com/go-chi/cors"
+	httpSwagger "github.com/swaggo/http-swagger"
+
+	"api-global/internal/config"
+	"api-global/internal/database"
+	"api-global/internal/handlers"
+	"api-global/internal/models"
+
+	_ "api-global/docs"
 )
 
+// @title           API Global Universitas
+// @version         1.0
+// @description     API centralizada para indicadores económicos y territoriales.
+// @contact.name    Jose
+// @host            localhost:8080
+// @BasePath        /
 func main() {
-	// 1. Inicializar el enrutador chi
-	r := chi.NewRouter()
+	cfg := config.LoadConfig()
 
-	// 2. Añadir Middlewares globales integrados en chi
-	r.Use(middleware.Logger)    // Registra cada petición HTTP en la consola
-	r.Use(middleware.Recoverer) // Evita que la API se caiga si hay un "panic" (error crítico)
-
-	r.Get("/", func(w http.ResponseWriter, r *http.Request) {
-		w.Write([]byte("¡Gogeta!!"))
-	})
-
-	// 3. Definir una ruta de prueba (Healthcheck)
-	r.Get("/ping", func(w http.ResponseWriter, r *http.Request) {
-		w.Write([]byte("¡La API Global está viva!"))
-	})
-
-	// 4. Iniciar el servidor
-	puerto := ":8080"
-	fmt.Printf("Servidor corriendo en el puerto %s\n", puerto)
-
-	// ListenAndServe es de la librería estándar de Go, pero le pasamos 'r' (nuestro router chi)
-	err := http.ListenAndServe(puerto, r)
+	db, err := database.InitDB(cfg)
 	if err != nil {
-		log.Fatalf("Error al iniciar el servidor: %v", err)
+		log.Fatalf("No se pudo iniciar la base de datos: %v", err)
+	}
+
+	// 1. Ejecutar Migraciones
+	db.AutoMigrate(&models.Estado{}, &models.Municipio{}, &models.Parroquia{}, &models.IndicadorEconomico{})
+
+	// 2. Ejecutar Seeder (Poblar BD)
+	database.SeedTerritories(db)
+
+	// Inicializar Router
+	r := chi.NewRouter()
+	r.Use(middleware.Logger)
+	r.Use(middleware.Recoverer)
+
+	// ==========================================
+	// CONFIGURACIÓN DE CORS
+	// ==========================================
+	r.Use(cors.Handler(cors.Options{
+		// Aquí defines los orígenes permitidos. Luego podrás añadir los dominios de producción.
+		AllowedOrigins: []string{"http://localhost:3000", "http://localhost:3001"},
+		// Métodos permitidos (GET, POST, etc.)
+		AllowedMethods: []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"},
+		// Cabeceras que el frontend tiene permitido enviar
+		AllowedHeaders:   []string{"Accept", "Authorization", "Content-Type", "X-CSRF-Token"},
+		ExposedHeaders:   []string{"Link"},
+		AllowCredentials: true,
+		MaxAge:           300, // Tiempo en segundos que el navegador cachea esta regla
+	}))
+
+	// Instanciar Handlers
+	ecoHandler := handlers.NewEconomicHandler(db)
+	terrHandler := handlers.NewTerritoryHandler(db)
+
+	// ==========================================
+	// RUTAS DE LA API
+	// ==========================================
+	r.Route("/api/v1", func(r chi.Router) {
+
+		r.Route("/economia", func(r chi.Router) {
+			r.Get("/ucauu", ecoHandler.GetUCAUU)
+			r.Post("/ucauu", ecoHandler.CreateUCAUU)
+			r.Get("/bcv", ecoHandler.GetBCV)
+		})
+
+		r.Route("/territorio", func(r chi.Router) {
+			r.Get("/estados", terrHandler.GetEstados)
+			r.Get("/estados/{estado_id}/municipios", terrHandler.GetMunicipios)
+			r.Get("/municipios/{municipio_id}/parroquias", terrHandler.GetParroquias)
+		})
+	})
+
+	// ==========================================
+	// CONFIGURACIÓN SWAGGER
+	// ==========================================
+	// Redirección limpia (sin index.html en la URL)
+	r.Get("/api/docs", func(w http.ResponseWriter, r *http.Request) {
+		http.Redirect(w, r, "/api/docs/index.html", http.StatusMovedPermanently)
+	})
+
+	r.Get("/api/docs/*", httpSwagger.Handler(
+		httpSwagger.URL("/api/docs/doc.json"),
+	))
+
+	// ==========================================
+	// INICIO DEL SERVIDOR
+	// ==========================================
+	log.Printf("🚀 Servidor corriendo en el puerto %s", cfg.Port)
+	log.Printf("📚 Documentación Swagger en: http://localhost:%s/api/docs", cfg.Port)
+
+	err = http.ListenAndServe(fmt.Sprintf(":%s", cfg.Port), r)
+	if err != nil {
+		log.Fatalf("Error en el servidor: %v", err)
 	}
 }
