@@ -3,49 +3,46 @@ version: '3.8'
 services:
   # Servicio 1: Nuestra API en Go
   api:
-    build: .             # Construye usando el Dockerfile del directorio actual
+    build: .
     container_name: api-global-backend
     ports:
-      - "8080:8080"      # Mapea puerto 8080 local al 8080 del contenedor
+      - "${PORT:-8080}:${PORT:-8080}" # Usa la variable PORT, o 8080 por defecto
     depends_on:
       db:
-        condition: service_healthy              # Espera a que la BD inicie antes de arrancar (básico)
-    environment:
-      - DB_HOST=db       # ¡OJO! Aquí el host es el nombre del servicio, no 'localhost'
-      - DB_USER=postgres
-      - DB_PASSWORD=secret
-      - DB_NAME=universitas_db
-      - DB_PORT=5432
+        condition: service_healthy
+    # Inyecta todas las variables del archivo .env automáticamente
+    env_file:
+      - .env
     networks:
       - universitas-net
 
   # Servicio 2: Base de Datos PostgreSQL
   db:
-    image: postgres:15-alpine
+    image: postgres:18-alpine
     container_name: api-global-db
     restart: always
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: secret
-      POSTGRES_DB: universitas_db
+      # Mapeamos las variables de Postgres a las de nuestro .env
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
     ports:
-      - "5433:5432"      # Exponemos el puerto 5432 para que puedas entrar con PGADMIN local
+      - "5433:5432"
     volumes:
-      - postgres_data:/var/lib/postgresql/data # Persistencia de datos
+      - postgres_data:/var/lib/postgresql
     networks:
       - universitas-net
     
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U postgres -d universitas_db"]
+      # Usamos las variables también en el comando de verificación
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER} -d ${DB_NAME}"]
       interval: 5s
       timeout: 5s
       retries: 5
 
-# Definición de volúmenes para que los datos sobrevivan al apagar Docker
 volumes:
   postgres_data:
 
-# Definición de red para que los contenedores se vean entre sí
 networks:
   universitas-net:
     driver: bridge
