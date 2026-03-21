@@ -27,3 +27,10 @@ type GenericResponse struct {
 	Message string      `json:"message" example:"Operación exitosa"`
 	Data    interface{} `json:"data,omitempty"`
 }
+
+// BCVResponse estructura la respuesta del endpoint de tasas BCV
+type BCVResponse struct {
+	USD   float64   `json:"usd" example:"36.4521"`
+	EUR   float64   `json:"eur" example:"39.1234"`
+	Fecha time.Time `json:"fecha" example:"2026-03-20T00:00:00Z"`
+}

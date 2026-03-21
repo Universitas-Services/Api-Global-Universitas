@@ -1,15 +1,14 @@
 package handlers
 
 import (
+	"api-global/internal/dto"
+	"api-global/internal/repositories"
 	"encoding/json"
 	"net/http"
 	"strconv"
 
 	"github.com/go-chi/chi/v5"
 	"gorm.io/gorm"
-
-	"api-global/internal/dto"
-	"api-global/internal/repositories"
 )
 
 type TerritoryHandler struct {
@@ -25,17 +24,29 @@ func NewTerritoryHandler(db *gorm.DB) *TerritoryHandler {
 // @Description  Retorna la lista de todos los estados de Venezuela
 // @Tags         Territorio
 // @Produce      json
-// @Success      200  {array}   dto.EstadoResponse
+// @Success      200  {object}  dto.GenericResponse{data=[]dto.EstadoResponse}
+// @Failure      500  {object}  dto.GenericResponse
 // @Router       /api/v1/territorio/estados [get]
 func (h *TerritoryHandler) GetEstados(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
+
 	estados, err := repositories.GetEstados(h.DB)
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
-		json.NewEncoder(w).Encode(dto.GenericResponse{Message: "Error obteniendo estados"})
+		json.NewEncoder(w).Encode(dto.GenericResponse{Message: "Error obteniendo estados de la base de datos"})
 		return
 	}
-	json.NewEncoder(w).Encode(estados)
+
+	var response []dto.EstadoResponse
+	for _, est := range estados {
+		response = append(response, dto.EstadoResponse{ID: est.ID, Nombre: est.Nombre})
+	}
+
+	w.WriteHeader(http.StatusOK)
+	json.NewEncoder(w).Encode(dto.GenericResponse{
+		Message: "Estados obtenidos con éxito",
+		Data:    response,
+	})
 }
 
 // GetMunicipios godoc
@@ -44,18 +55,37 @@ func (h *TerritoryHandler) GetEstados(w http.ResponseWriter, r *http.Request) {
 // @Tags         Territorio
 // @Produce      json
 // @Param        estado_id path int true "ID del Estado"
-// @Success      200  {array}   dto.MunicipioResponse
+// @Success      200  {object}  dto.GenericResponse{data=[]dto.MunicipioResponse}
+// @Failure      400  {object}  dto.GenericResponse
+// @Failure      500  {object}  dto.GenericResponse
 // @Router       /api/v1/territorio/estados/{estado_id}/municipios [get]
 func (h *TerritoryHandler) GetMunicipios(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
-	estadoID, _ := strconv.Atoi(chi.URLParam(r, "estado_id"))
+
+	estadoID, err := strconv.Atoi(chi.URLParam(r, "estado_id"))
+	if err != nil {
+		w.WriteHeader(http.StatusBadRequest)
+		json.NewEncoder(w).Encode(dto.GenericResponse{Message: "ID de estado inválido"})
+		return
+	}
 
 	municipios, err := repositories.GetMunicipiosByEstado(h.DB, estadoID)
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
+		json.NewEncoder(w).Encode(dto.GenericResponse{Message: "Error obteniendo municipios"})
 		return
 	}
-	json.NewEncoder(w).Encode(municipios)
+
+	var response []dto.MunicipioResponse
+	for _, mun := range municipios {
+		response = append(response, dto.MunicipioResponse{ID: mun.ID, EstadoID: mun.EstadoID, Nombre: mun.Nombre})
+	}
+
+	w.WriteHeader(http.StatusOK)
+	json.NewEncoder(w).Encode(dto.GenericResponse{
+		Message: "Municipios obtenidos con éxito",
+		Data:    response,
+	})
 }
 
 // GetParroquias godoc
@@ -64,16 +94,35 @@ func (h *TerritoryHandler) GetMunicipios(w http.ResponseWriter, r *http.Request)
 // @Tags         Territorio
 // @Produce      json
 // @Param        municipio_id path int true "ID del Municipio"
-// @Success      200  {array}   dto.ParroquiaResponse
+// @Success      200  {object}  dto.GenericResponse{data=[]dto.ParroquiaResponse}
+// @Failure      400  {object}  dto.GenericResponse
+// @Failure      500  {object}  dto.GenericResponse
 // @Router       /api/v1/territorio/municipios/{municipio_id}/parroquias [get]
 func (h *TerritoryHandler) GetParroquias(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
-	municipioID, _ := strconv.Atoi(chi.URLParam(r, "municipio_id"))
+
+	municipioID, err := strconv.Atoi(chi.URLParam(r, "municipio_id"))
+	if err != nil {
+		w.WriteHeader(http.StatusBadRequest)
+		json.NewEncoder(w).Encode(dto.GenericResponse{Message: "ID de municipio inválido"})
+		return
+	}
 
 	parroquias, err := repositories.GetParroquiasByMunicipio(h.DB, municipioID)
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
+		json.NewEncoder(w).Encode(dto.GenericResponse{Message: "Error obteniendo parroquias"})
 		return
 	}
-	json.NewEncoder(w).Encode(parroquias)
+
+	var response []dto.ParroquiaResponse
+	for _, parr := range parroquias {
+		response = append(response, dto.ParroquiaResponse{ID: parr.ID, MunicipioID: parr.MunicipioID, Nombre: parr.Nombre})
+	}
+
+	w.WriteHeader(http.StatusOK)
+	json.NewEncoder(w).Encode(dto.GenericResponse{
+		Message: "Parroquias obtenidas con éxito",
+		Data:    response,
+	})
 }

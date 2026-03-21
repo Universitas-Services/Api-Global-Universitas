@@ -53,6 +53,7 @@ func main() {
 		r.Route("/economia", func(r chi.Router) {
 			r.Get("/ucauu", ecoHandler.GetUCAUU)
 			r.Post("/ucauu", ecoHandler.CreateUCAUU)
+			r.Get("/bcv", ecoHandler.GetBCV)
 		})
 
 		r.Route("/territorio", func(r chi.Router) {

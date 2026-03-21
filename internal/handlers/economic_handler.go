@@ -3,8 +3,10 @@ package handlers
 import (
 	"api-global/internal/dto"
 	"api-global/internal/repositories"
+	"api-global/internal/scrapers"
 	"encoding/json"
 	"net/http"
+	"time"
 
 	"github.com/go-playground/validator/v10"
 	"gorm.io/gorm"
@@ -89,4 +91,52 @@ func (h *EconomicHandler) GetUCAUU(w http.ResponseWriter, r *http.Request) {
 		Fecha: indicador.Fecha,
 	}
 	json.NewEncoder(w).Encode(response)
+}
+
+// GetBCV godoc
+// @Summary      Obtener tasas del BCV (Dólar y Euro)
+// @Description  Retorna el valor actual del Dólar y Euro oficial.
+// @Tags         Economia
+// @Produce      json
+// @Success      200  {object}  dto.GenericResponse{data=dto.BCVResponse}
+// @Failure      500  {object}  dto.GenericResponse
+// @Router       /api/v1/economia/bcv [get]
+func (h *EconomicHandler) GetBCV(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
+
+	usdHoy, errUSD := repositories.GetIndicadorDeHoy(h.DB, "USD_BCV")
+	eurHoy, errEUR := repositories.GetIndicadorDeHoy(h.DB, "EUR_BCV")
+
+	if errUSD != nil || errEUR != nil {
+		rates, err := scrapers.ScrapeBCV()
+		if err != nil {
+			w.WriteHeader(http.StatusInternalServerError)
+			json.NewEncoder(w).Encode(dto.GenericResponse{Message: "Error obteniendo datos del BCV en vivo: " + err.Error()})
+			return
+		}
+
+		_ = repositories.SaveIndicador(h.DB, "USD_BCV", rates.USD)
+		_ = repositories.SaveIndicador(h.DB, "EUR_BCV", rates.EUR)
+
+		w.WriteHeader(http.StatusOK)
+		json.NewEncoder(w).Encode(dto.GenericResponse{
+			Message: "Tasas del BCV extraídas y actualizadas con éxito",
+			Data: dto.BCVResponse{
+				USD:   rates.USD,
+				EUR:   rates.EUR,
+				Fecha: time.Now().Truncate(24 * time.Hour),
+			},
+		})
+		return
+	}
+
+	w.WriteHeader(http.StatusOK)
+	json.NewEncoder(w).Encode(dto.GenericResponse{
+		Message: "Tasas del BCV obtenidas con éxito (Desde Caché)",
+		Data: dto.BCVResponse{
+			USD:   usdHoy.Valor,
+			EUR:   eurHoy.Valor,
+			Fecha: usdHoy.Fecha,
+		},
+	})
 }

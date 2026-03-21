@@ -17,6 +17,44 @@ const docTemplate = `{
     "host": "{{.Host}}",
     "basePath": "{{.BasePath}}",
     "paths": {
+        "/api/v1/economia/bcv": {
+            "get": {
+                "description": "Retorna el valor actual del Dólar y Euro oficial.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Economia"
+                ],
+                "summary": "Obtener tasas del BCV (Dólar y Euro)",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/dto.GenericResponse"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/definitions/dto.BCVResponse"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/dto.GenericResponse"
+                        }
+                    }
+                }
+            }
+        },
         "/api/v1/economia/ucauu": {
             "get": {
                 "description": "Retorna el último valor registrado de la unidad UCAUU",
@@ -101,10 +139,28 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/definitions/dto.EstadoResponse"
-                            }
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/dto.GenericResponse"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/definitions/dto.EstadoResponse"
+                                            }
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/dto.GenericResponse"
                         }
                     }
                 }
@@ -133,10 +189,34 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/definitions/dto.MunicipioResponse"
-                            }
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/dto.GenericResponse"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/definitions/dto.MunicipioResponse"
+                                            }
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/dto.GenericResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/dto.GenericResponse"
                         }
                     }
                 }
@@ -165,10 +245,34 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/definitions/dto.ParroquiaResponse"
-                            }
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/dto.GenericResponse"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/definitions/dto.ParroquiaResponse"
+                                            }
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/dto.GenericResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/dto.GenericResponse"
                         }
                     }
                 }
@@ -176,6 +280,23 @@ const docTemplate = `{
         }
     },
     "definitions": {
+        "dto.BCVResponse": {
+            "type": "object",
+            "properties": {
+                "eur": {
+                    "type": "number",
+                    "example": 39.1234
+                },
+                "fecha": {
+                    "type": "string",
+                    "example": "2026-03-20T00:00:00Z"
+                },
+                "usd": {
+                    "type": "number",
+                    "example": 36.4521
+                }
+            }
+        },
         "dto.CreateUCAUURequest": {
             "type": "object",
             "required": [

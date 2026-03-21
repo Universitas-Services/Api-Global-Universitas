@@ -37,3 +37,31 @@ func GetLatestUCAUU(db *gorm.DB) (*models.IndicadorEconomico, error) {
 	}
 	return &indicador, nil
 }
+
+// GetIndicadorDeHoy busca si ya tenemos registrado un indicador específico para la fecha actual
+func GetIndicadorDeHoy(db *gorm.DB, tipo string) (*models.IndicadorEconomico, error) {
+	var indicador models.IndicadorEconomico
+	hoy := time.Now().Truncate(24 * time.Hour)
+
+	err := db.Where("tipo = ? AND fecha = ?", tipo, hoy).First(&indicador).Error
+	if err != nil {
+		return nil, err // Retornará error si no lo encuentra
+	}
+	return &indicador, nil
+}
+
+// SaveIndicador guarda un nuevo valor económico con la fecha de hoy
+func SaveIndicador(db *gorm.DB, tipo string, valor float64) error {
+	hoy := time.Now().Truncate(24 * time.Hour)
+
+	indicador := models.IndicadorEconomico{
+		Tipo:  tipo,
+		Valor: valor,
+		Fecha: hoy,
+	}
+
+	// Usamos FirstOrCreate por seguridad, por si hay peticiones concurrentes
+	return db.Where(models.IndicadorEconomico{Tipo: tipo, Fecha: hoy}).
+		Assign(models.IndicadorEconomico{Valor: valor}).
+		FirstOrCreate(&indicador).Error
+}
