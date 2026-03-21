@@ -7,6 +7,7 @@ import (
 
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
+	"github.com/go-chi/cors"
 	httpSwagger "github.com/swaggo/http-swagger"
 
 	"api-global/internal/config"
@@ -37,9 +38,25 @@ func main() {
 	// 2. Ejecutar Seeder (Poblar BD)
 	database.SeedTerritories(db)
 
+	// Inicializar Router
 	r := chi.NewRouter()
 	r.Use(middleware.Logger)
 	r.Use(middleware.Recoverer)
+
+	// ==========================================
+	// CONFIGURACIÓN DE CORS
+	// ==========================================
+	r.Use(cors.Handler(cors.Options{
+		// Aquí defines los orígenes permitidos. Luego podrás añadir los dominios de producción.
+		AllowedOrigins: []string{"http://localhost:3000", "http://localhost:3001"},
+		// Métodos permitidos (GET, POST, etc.)
+		AllowedMethods: []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"},
+		// Cabeceras que el frontend tiene permitido enviar
+		AllowedHeaders:   []string{"Accept", "Authorization", "Content-Type", "X-CSRF-Token"},
+		ExposedHeaders:   []string{"Link"},
+		AllowCredentials: true,
+		MaxAge:           300, // Tiempo en segundos que el navegador cachea esta regla
+	}))
 
 	// Instanciar Handlers
 	ecoHandler := handlers.NewEconomicHandler(db)
