@@ -6,43 +6,14 @@ services:
     build: .
     container_name: api-global-backend
     ports:
-      - "${PORT:-8080}:${PORT:-8080}" # Usa la variable PORT, o 8080 por defecto
-    depends_on:
-      db:
-        condition: service_healthy
+      - "${PORT:-8080}:${PORT:-8080}"
     # Inyecta todas las variables del archivo .env automáticamente
     env_file:
       - .env
     networks:
       - universitas-net
 
-  # Servicio 2: Base de Datos PostgreSQL
-  db:
-    image: postgres:18-alpine
-    container_name: api-global-db
-    restart: always
-    environment:
-      # Mapeamos las variables de Postgres a las de nuestro .env
-      POSTGRES_USER: ${DB_USER}
-      POSTGRES_PASSWORD: ${DB_PASSWORD}
-      POSTGRES_DB: ${DB_NAME}
-    ports:
-      - "5433:5432"
-    volumes:
-      - postgres_data:/var/lib/postgresql
-    networks:
-      - universitas-net
-    
-    healthcheck:
-      # Usamos las variables también en el comando de verificación
-      test: ["CMD-SHELL", "pg_isready -U ${DB_USER} -d ${DB_NAME}"]
-      interval: 5s
-      timeout: 5s
-      retries: 5
-
-volumes:
-  postgres_data:
-
+# Definición de red para los contenedores (por si a futuro agregas Redis u otro servicio)
 networks:
   universitas-net:
     driver: bridge

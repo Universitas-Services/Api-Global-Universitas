@@ -11,26 +11,27 @@ import (
 	"gorm.io/gorm"
 )
 
-// InitDB inicializa la conexión a PostgreSQL con sistema de reintentos
+// InitDB inicializa la conexión a Supabase usando GORM
 func InitDB(cfg *config.Config) (*gorm.DB, error) {
-	dsn := fmt.Sprintf("host=%s user=%s password=%s dbname=%s port=%s sslmode=%s",
-		cfg.DBHost, cfg.DBUser, cfg.DBPassword, cfg.DBName, cfg.DBPort, cfg.DBSSLMode)
+	if cfg.DBUrl == "" {
+		return nil, fmt.Errorf("❌ Error fatal: La variable DATABASE_URL está vacía")
+	}
 
 	var db *gorm.DB
 	var err error
 
-	// Sistema de reintentos: Intentará conectar 5 veces, esperando 2 segundos entre intentos.
+	// Sistema de reintentos para manejar el arranque de Supabase
 	for i := 1; i <= 5; i++ {
-		db, err = gorm.Open(postgres.Open(dsn), &gorm.Config{})
+		// Le pasamos directamente la URL completa a GORM
+		db, err = gorm.Open(postgres.Open(cfg.DBUrl), &gorm.Config{})
 		if err == nil {
-			log.Println("✅ Conexión a PostgreSQL establecida exitosamente")
-			return db, nil // Conexión exitosa, salimos del bucle
+			log.Println("✅ Conexión a Supabase establecida exitosamente")
+			return db, nil
 		}
 
-		log.Printf("⏳ Esperando a la base de datos (Intento %d/5)...\n", i)
+		log.Printf("⏳ Esperando a Supabase (Intento %d/5)...\n", i)
 		time.Sleep(2 * time.Second)
 	}
 
-	// Si después de 5 intentos falló, devolvemos el error fatal
-	return nil, fmt.Errorf("error conectando a la base de datos tras varios intentos: %v", err)
+	return nil, fmt.Errorf("error conectando a Supabase tras varios intentos: %v", err)
 }
