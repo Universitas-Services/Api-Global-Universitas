@@ -21,7 +21,7 @@ import (
 // @title           API Global Universitas
 // @version         1.0
 // @description     API centralizada para indicadores económicos y territoriales.
-// @contact.name    Jose
+// @contact.name    Luiger
 // @host            localhost:8080
 // @BasePath        /
 func main() {
@@ -32,10 +32,10 @@ func main() {
 		log.Fatalf("No se pudo iniciar la base de datos: %v", err)
 	}
 
-	// 1. Ejecutar Migraciones
+	// Ejecutar Migraciones
 	db.AutoMigrate(&models.Estado{}, &models.Municipio{}, &models.Parroquia{}, &models.IndicadorEconomico{})
 
-	// 2. Ejecutar Seeder (Poblar BD)
+	// Ejecutar Seeder (Poblar BD)
 	database.SeedTerritories(db)
 
 	// Inicializar Router
@@ -47,8 +47,8 @@ func main() {
 	// CONFIGURACIÓN DE CORS
 	// ==========================================
 	r.Use(cors.Handler(cors.Options{
-		// Aquí defines los orígenes permitidos. Luego podrás añadir los dominios de producción.
-		AllowedOrigins: []string{"http://localhost:3000", "http://localhost:3001"},
+		// Aquí defines los orígenes permitidos.
+		AllowedOrigins: cfg.CorsOrigins,
 		// Métodos permitidos (GET, POST, etc.)
 		AllowedMethods: []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"},
 		// Cabeceras que el frontend tiene permitido enviar
