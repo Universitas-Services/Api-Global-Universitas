@@ -32,8 +32,10 @@ func main() {
 		log.Fatalf("No se pudo iniciar la base de datos: %v", err)
 	}
 
-	// Ejecutar Migraciones
-	db.AutoMigrate(&models.Estado{}, &models.Municipio{}, &models.Parroquia{}, &models.IndicadorEconomico{})
+	// Ejecutar Migraciones (solo si está habilitado, desactivado en producción)
+	if cfg.RunMigrations {
+		db.AutoMigrate(&models.Estado{}, &models.Municipio{}, &models.Parroquia{}, &models.IndicadorEconomico{})
+	}
 
 	// Ejecutar Seeder si está habilitada en el entorno (Útil para local, desactivado en producción)
 	if cfg.RunSeeder {
