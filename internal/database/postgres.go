@@ -23,7 +23,9 @@ func InitDB(cfg *config.Config) (*gorm.DB, error) {
 	// Sistema de reintentos para manejar el arranque de Supabase
 	for i := 1; i <= 5; i++ {
 		// Le pasamos directamente la URL completa a GORM
-		db, err = gorm.Open(postgres.Open(cfg.DBUrl), &gorm.Config{})
+		db, err = gorm.Open(postgres.Open(cfg.DBUrl), &gorm.Config{
+			PrepareStmt: false, // Desactivado para compatibilidad con PgBouncer (Supabase)
+		})
 		if err == nil {
 			log.Println("✅ Conexión a Supabase establecida exitosamente")
 			return db, nil
