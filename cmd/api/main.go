@@ -35,8 +35,10 @@ func main() {
 	// Ejecutar Migraciones
 	db.AutoMigrate(&models.Estado{}, &models.Municipio{}, &models.Parroquia{}, &models.IndicadorEconomico{})
 
-	// Ejecutar Seeder (Poblar BD - Desactivado para evitar duplicados en Render)
-	// database.SeedTerritories(db)
+	// Ejecutar Seeder si está habilitada en el entorno (Útil para local, desactivado en producción)
+	if cfg.RunSeeder {
+		database.SeedTerritories(db)
+	}
 
 	// Inicializar Router
 	r := chi.NewRouter()

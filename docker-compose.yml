@@ -10,6 +10,24 @@ services:
     # Inyecta todas las variables del archivo .env automáticamente
     env_file:
       - .env
+    depends_on:
+      - db
+    networks:
+      - universitas-net
+
+  # Servicio 2: Base de Datos PostgreSQL
+  db:
+    image: postgres:15-alpine
+    container_name: universitas-postgres
+    restart: always
+    environment:
+      POSTGRES_USER: ${DB_USER:-postgres}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-postgres}
+      POSTGRES_DB: ${DB_NAME:-universitas_db}
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./pgdata:/var/lib/postgresql/data
     networks:
       - universitas-net
 

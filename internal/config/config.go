@@ -11,6 +11,7 @@ type Config struct {
 	Port        string
 	DBUrl       string // URL de conexión a la base de datos (Supabase)
 	CorsOrigins []string
+	RunSeeder   bool   // Controlar si se ejecuta el seeder territorial
 }
 
 func LoadConfig() *Config {
@@ -34,6 +35,7 @@ func LoadConfig() *Config {
 		Port:        getEnv("PORT", "8080"),
 		DBUrl:       getEnv("DATABASE_URL", ""),
 		CorsOrigins: origins,
+		RunSeeder:   getEnv("RUN_SEEDER", "false") == "true",
 	}
 }
 

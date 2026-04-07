@@ -25,6 +25,7 @@ func InitDB(cfg *config.Config) (*gorm.DB, error) {
 		// Le pasamos directamente la URL completa a GORM
 		db, err = gorm.Open(postgres.Open(cfg.DBUrl), &gorm.Config{
 			PrepareStmt: false, // Desactivado para compatibilidad con PgBouncer (Supabase)
+			SkipDefaultTransaction: true, // Recomendado para PgBouncer
 		})
 		if err == nil {
 			log.Println("✅ Conexión a Supabase establecida exitosamente")
