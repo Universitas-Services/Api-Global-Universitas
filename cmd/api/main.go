@@ -10,6 +10,7 @@ import (
 	"github.com/go-chi/cors"
 	httpSwagger "github.com/swaggo/http-swagger"
 
+	"api-global/docs"
 	"api-global/internal/config"
 	"api-global/internal/database"
 	"api-global/internal/handlers"
@@ -22,7 +23,6 @@ import (
 // @version         1.0
 // @description     API centralizada para indicadores económicos y territoriales.
 // @contact.name    Luiger
-// @host            localhost:8080
 // @BasePath        /
 func main() {
 	cfg := config.LoadConfig()
@@ -91,6 +91,9 @@ func main() {
 	r.Get("/api/docs/*", httpSwagger.Handler(
 		httpSwagger.URL("/api/docs/doc.json"),
 	))
+
+	// Configuración de Swagger (Host vacío para desarrollo local)
+	docs.SwaggerInfo.Host = ""
 
 	// ==========================================
 	// INICIO DEL SERVIDOR
