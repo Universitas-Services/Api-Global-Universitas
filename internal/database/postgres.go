@@ -3,6 +3,7 @@ package database
 import (
 	"fmt"
 	"log"
+	"strings"
 	"time"
 
 	"api-global/internal/config"
@@ -22,10 +23,19 @@ func InitDB(cfg *config.Config) (*gorm.DB, error) {
 
 	// Sistema de reintentos para manejar el arranque de Supabase
 	for i := 1; i <= 5; i++ {
-		// Le pasamos directamente la URL completa a GORM
-		db, err = gorm.Open(postgres.Open(cfg.DBUrl), &gorm.Config{
-			PrepareStmt: false, // Desactivado para compatibilidad con PgBouncer (Supabase)
-			SkipDefaultTransaction: true, // Recomendado para PgBouncer
+		// Forzamos prepare_threshold=0 en el DSN para evitar errores con PgBouncer/Supabase
+		dsn := cfg.DBUrl
+		if !strings.Contains(dsn, "prepare_threshold=0") {
+			if strings.Contains(dsn, "?") {
+				dsn += "&prepare_threshold=0"
+			} else {
+				dsn += "?prepare_threshold=0"
+			}
+		}
+
+		db, err = gorm.Open(postgres.Open(dsn), &gorm.Config{
+			PrepareStmt:            false, // Desactivado para GORM
+			SkipDefaultTransaction: true,  // Recomendado para PgBouncer
 		})
 		if err == nil {
 			log.Println("✅ Conexión a Supabase establecida exitosamente")
