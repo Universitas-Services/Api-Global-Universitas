@@ -23,3 +23,9 @@ func GetParroquiasByMunicipio(db *gorm.DB, municipioID int) ([]models.Parroquia,
 	err := db.Where("municipio_id = ?", municipioID).Order("nombre asc").Find(&parroquias).Error
 	return parroquias, err
 }
+
+func GetCiudadesByMunicipio(db *gorm.DB, municipioID int) ([]models.Ciudad, error) {
+	var ciudades []models.Ciudad
+	err := db.Where("municipio_id = ?", municipioID).Order("id asc").Find(&ciudades).Error
+	return ciudades, err
+}

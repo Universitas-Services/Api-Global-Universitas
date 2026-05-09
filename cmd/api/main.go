@@ -14,14 +14,13 @@ import (
 	"api-global/internal/config"
 	"api-global/internal/database"
 	"api-global/internal/handlers"
-	"api-global/internal/models"
 
 	_ "api-global/docs"
 )
 
 // @title           API Global Universitas
 // @version         1.0
-// @description     API centralizada para indicadores económicos y territoriales.
+// @description     API centralizada para indicadores economicos y territoriales.
 // @contact.name    Luiger
 // @BasePath        /
 func main() {
@@ -32,45 +31,23 @@ func main() {
 		log.Fatalf("No se pudo iniciar la base de datos: %v", err)
 	}
 
-	// Ejecutar Migraciones (solo si está habilitado, desactivado en producción)
-	if cfg.RunMigrations {
-		db.AutoMigrate(&models.Estado{}, &models.Municipio{}, &models.Parroquia{}, &models.IndicadorEconomico{})
-	}
-
-	// Ejecutar Seeder si está habilitada en el entorno (Útil para local, desactivado en producción)
-	if cfg.RunSeeder {
-		database.SeedTerritories(db)
-	}
-
-	// Inicializar Router
 	r := chi.NewRouter()
 	r.Use(middleware.Logger)
 	r.Use(middleware.Recoverer)
 
-	// ==========================================
-	// CONFIGURACIÓN DE CORS
-	// ==========================================
 	r.Use(cors.Handler(cors.Options{
-		// Aquí defines los orígenes permitidos.
-		AllowedOrigins: cfg.CorsOrigins,
-		// Métodos permitidos (GET, POST, etc.)
-		AllowedMethods: []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"},
-		// Cabeceras que el frontend tiene permitido enviar
+		AllowedOrigins:   cfg.CorsOrigins,
+		AllowedMethods:   []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"},
 		AllowedHeaders:   []string{"Accept", "Authorization", "Content-Type", "X-CSRF-Token"},
 		ExposedHeaders:   []string{"Link"},
 		AllowCredentials: true,
-		MaxAge:           300, // Tiempo en segundos que el navegador cachea esta regla
+		MaxAge:           300,
 	}))
 
-	// Instanciar Handlers
 	ecoHandler := handlers.NewEconomicHandler(db)
 	terrHandler := handlers.NewTerritoryHandler(db)
 
-	// ==========================================
-	// RUTAS DE LA API
-	// ==========================================
 	r.Route("/api/v1", func(r chi.Router) {
-
 		r.Route("/economia", func(r chi.Router) {
 			r.Get("/ucauu", ecoHandler.GetUCAUU)
 			r.Post("/ucauu", ecoHandler.CreateUCAUU)
@@ -81,13 +58,10 @@ func main() {
 			r.Get("/estados", terrHandler.GetEstados)
 			r.Get("/estados/{estado_id}/municipios", terrHandler.GetMunicipios)
 			r.Get("/municipios/{municipio_id}/parroquias", terrHandler.GetParroquias)
+			r.Get("/municipios/{municipio_id}/ciudades", terrHandler.GetCiudades)
 		})
 	})
 
-	// ==========================================
-	// CONFIGURACIÓN SWAGGER
-	// ==========================================
-	// Redirección limpia (sin index.html en la URL)
 	r.Get("/api/docs", func(w http.ResponseWriter, r *http.Request) {
 		http.Redirect(w, r, "/api/docs/index.html", http.StatusMovedPermanently)
 	})
@@ -96,14 +70,10 @@ func main() {
 		httpSwagger.URL("/api/docs/doc.json"),
 	))
 
-	// Configuración de Swagger (Host vacío para desarrollo local)
 	docs.SwaggerInfo.Host = ""
 
-	// ==========================================
-	// INICIO DEL SERVIDOR
-	// ==========================================
-	log.Printf("🚀 Servidor corriendo en el puerto %s", cfg.Port)
-	log.Printf("📚 Documentación Swagger en: http://localhost:%s/api/docs", cfg.Port)
+	log.Printf("Servidor corriendo en el puerto %s", cfg.Port)
+	log.Printf("Documentacion Swagger en: http://localhost:%s/api/docs", cfg.Port)
 
 	err = http.ListenAndServe(fmt.Sprintf(":%s", cfg.Port), r)
 	if err != nil {

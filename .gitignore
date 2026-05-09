@@ -40,3 +40,7 @@ vendor/
 .vscode/
 .idea/
 *.swp
+
+.gocache/
+.gomodcache/
+pgdata/
