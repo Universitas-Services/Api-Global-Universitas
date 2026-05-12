@@ -22,6 +22,18 @@ definitions:
     required:
     - valor
     type: object
+  dto.CiudadResponse:
+    properties:
+      id:
+        example: 75
+        type: integer
+      municipio_id:
+        example: 10
+        type: integer
+      nombre:
+        example: Barquisimeto
+        type: string
+    type: object
   dto.EstadoResponse:
     properties:
       id:
@@ -238,6 +250,40 @@ paths:
           schema:
             $ref: '#/definitions/dto.GenericResponse'
       summary: Obtener parroquias por municipio
+      tags:
+      - Territorio
+  /api/v1/territorio/municipios/{municipio_id}/ciudades:
+    get:
+      description: Retorna la lista de ciudades pertenecientes a un municipio especÃ­fico
+      parameters:
+      - description: ID del Municipio
+        in: path
+        name: municipio_id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/dto.GenericResponse'
+            - properties:
+                data:
+                  items:
+                    $ref: '#/definitions/dto.CiudadResponse'
+                  type: array
+              type: object
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/dto.GenericResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/dto.GenericResponse'
+      summary: Obtener ciudades por municipio
       tags:
       - Territorio
 swagger: "2.0"

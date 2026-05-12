@@ -277,6 +277,62 @@ const docTemplate = `{
                     }
                 }
             }
+        },
+        "/api/v1/territorio/municipios/{municipio_id}/ciudades": {
+            "get": {
+                "description": "Retorna la lista de ciudades pertenecientes a un municipio especÃ­fico",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Territorio"
+                ],
+                "summary": "Obtener ciudades por municipio",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "ID del Municipio",
+                        "name": "municipio_id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/dto.GenericResponse"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/definitions/dto.CiudadResponse"
+                                            }
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/dto.GenericResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/dto.GenericResponse"
+                        }
+                    }
+                }
+            }
         }
     },
     "definitions": {
@@ -307,6 +363,23 @@ const docTemplate = `{
                     "description": "validate:\"required,gt=0\" asegura que el campo venga y sea mayor a cero",
                     "type": "number",
                     "example": 35.5
+                }
+            }
+        },
+        "dto.CiudadResponse": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer",
+                    "example": 75
+                },
+                "municipio_id": {
+                    "type": "integer",
+                    "example": 10
+                },
+                "nombre": {
+                    "type": "string",
+                    "example": "Barquisimeto"
                 }
             }
         },
