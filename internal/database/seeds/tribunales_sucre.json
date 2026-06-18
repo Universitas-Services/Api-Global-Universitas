@@ -1,0 +1,406 @@
+[
+  {
+    "estado": "Sucre",
+    "tribunales_estadales": [
+      {
+        "nombre": "Corte de Apelaciones.",
+        "categoria": "Superior"
+      },
+      {
+        "nombre": "Corte de Apelaciones Sala Especial Accidental Adolescente.",
+        "categoria": "Superior"
+      },
+      {
+        "nombre": "Juzgado Superior Civil, Mercantil, Agrario y Tránsito Primer Circuito.",
+        "categoria": "Superior"
+      },
+      {
+        "nombre": "Juzgado Superior Civil, Mercantil, Agrario, Tránsito y Trabajo Segundo Circuito.",
+        "categoria": "Superior"
+      },
+      {
+        "nombre": "Juzgado Superior del Trabajo.",
+        "categoria": "Superior"
+      },
+      {
+        "nombre": "Juzgado Superior Estadal Contencioso Administrativo.",
+        "categoria": "Superior"
+      },
+      {
+        "nombre": "Tribunal Superior Agrario.",
+        "categoria": "Superior"
+      },
+      {
+        "nombre": "Sala Uno de la Corte de Apelaciones, Extensión Carúpano",
+        "categoria": "Superior"
+      },
+      {
+        "nombre": "Tribunal Primero de Primera Instancia en Funciones de Control.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Segundo de Primera Instancia en Funciones de Control.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Tercero de Primera Instancia en Funciones de Control.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Cuarto de Primera Instancia en Funciones de Control.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Quinto de Primera Instancia en Funciones de Control.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Sexto de Primera Instancia en Funciones de Control.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Primero de Primera Instancia en Funciones de Juicio.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Segundo de Primera Instancia en Funciones de Juicio.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Tercero de Primera Instancia en Funciones de Juicio.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Cuarto de Primera Instancia en Funciones de Juicio.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Quinto de Primera Instancia en Funciones de Juicio.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Sexto de Primera Instancia en Funciones de Juicio.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Primero de Primera Instancia en Funciones de Ejecución.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Segundo de Primera Instancia en Funciones de Ejecución.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Tercero de Primera Instancia en Funciones de Ejecución.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Primero de Primera Instancia en funciones de Control LOPNA.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Segundo de Primera Instancia en funciones de Control LOPNA.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Primero de Primera Instancia en funciones de Juicio LOPNA.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Primero de Primera Instancia en funciones de Ejecución LOPNA.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Segundo en Función de Control Municipal.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal de Protección del Niño y del Adolescente.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Superior Primero de Protección de Niños, Niñas y Adolescentes.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Juzgado Primero de Primera Instancia en lo Civil, Mercantil, Agrario, Tránsito y del Trabajo.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Juzgado Segundo de Primera Instancia en lo Civil, Mercantil, Agrario, Tránsito y del Trabajo.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Juzgado Tercero de Primera Instancia en lo Civil, Mercantil, Agrario, Tránsito y del Trabajo.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Juzgado Segundo de Sustanciación, Ejecución y Mediación.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Juzgado Tercero de Sustanciación, Ejecución y Mediación.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Juzgado Segundo de Primera Instancia de Juicio.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Juzgado Tercero de Primera Instancia de Juicio.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Primero de Primera Instancia de Mediación, Sustanciación y Régimen Procesal Transitorio.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Primero de Primera Instancia de Juicio y Régimen Procesal Transitorio.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Primero de Primera Instancia en Funciones de Control.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Segundo de Primera Instancia en Funciones de Control.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Tercero de Primera Instancia en Funciones de Control.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Cuarto de Primera Instancia en Funciones de Control.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Quinto de Primera Instancia en Funciones de Control.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Primero de Primera Instancia en Funciones de Juicio.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Segundo de Primera Instancia en Funciones de Juicio.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Tercero de Primera Instancia en Funciones de Juicio.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Primero de Primera Instancia en Funciones de Ejecución.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Segundo de Primera Instancia en Funciones de Ejecución.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Primero de Primera Instancia en funciones de Control LOPNA.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Segundo de Primera Instancia en funciones de Control LOPNA.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Primero de Primera Instancia en funciones de Juicio LOPNA.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Primero de Primera Instancia en funciones de Ejecución LOPNA.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Penal de Primera Instancia Estadal en Funciones de Control con Competencia en Ilícitos Económicos y Fronterizos.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal de Protección del Niño y del Adolescente.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Juzgado Primero de Primera Instancia en lo Civil, Mercantil, Agrario, Tránsito y del Trabajo.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Juzgado Primero de Sustanciación, Ejecución y Mediación.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Juzgado Primero de Primera Instancia de Juicio.",
+        "categoria": "Primera Instancia"
+      }
+    ],
+    "tribunales_municipales": [
+      {
+        "municipios": [
+          "Sucre"
+        ],
+        "tribunales": [
+          {
+            "nombre": "Tribunal Primero de Municipio Ordinario y Ejecutor de Medidas de los Municipios Sucre y Cruz Salmerón Acosta del Primer Circuito."
+          },
+          {
+            "nombre": "Tribunal Segundo de Municipio Ordinario y Ejecutor de Medidas de los Municipios Sucre y Cruz Salmerón Acosta del Primer Circuito."
+          },
+          {
+            "nombre": "Juzgado de los Municipios Sucre y Cruz Salmerón Acosta."
+          }
+        ]
+      },
+      {
+        "municipios": [
+          "Montes"
+        ],
+        "tribunales": [
+          {
+            "nombre": "Tribunal de Municipio Ordinario y Ejecutor de Medidas del Municipio Montes del Primer Circuito."
+          },
+          {
+            "nombre": "Juzgado del Municipio Montes."
+          }
+        ]
+      },
+      {
+        "municipios": [
+          "Ribero"
+        ],
+        "tribunales": [
+          {
+            "nombre": "Tribunal Primero de Municipio Ordinario y Ejecutor de Medidas de los Municipios Ribero y Andrés Eloy Blanco del Primer Circuito."
+          },
+          {
+            "nombre": "Tribunal Segundo de Municipio Ordinario y Ejecutor de Medidas de los Municipios Ribero y Andrés Eloy Blanco del Primer Circuito."
+          },
+          {
+            "nombre": "Tribunal Tercero de Municipio Ordinario y Ejecutor de Medidas de los Municipios Ribero y Andrés Eloy Blanco del Primer Circuito."
+          },
+          {
+            "nombre": "Juzgado del Municipio Ribero."
+          },
+          {
+            "nombre": "Juzgado Ejecutor de Medidas de los Municipios Ribero, Andrés Eloy Blanco, Bolívar y Mejías."
+          }
+        ]
+      },
+      {
+        "municipios": [],
+        "tribunales": [
+          {
+            "nombre": "Tribunal de Municipio Ordinario y Ejecutor de Medidas de los Municipios Bolívar y Mejías del Primer Circuito."
+          },
+          {
+            "nombre": "Tribunal Primero de Municipio Ordinario y Ejecutor de Medidas del Municipio Valdéz del Segundo Circuito."
+          },
+          {
+            "nombre": "Tribunal Segundo de Municipio Ordinario y Ejecutor de Medidas del Municipio Valdéz del Segundo Circuito."
+          },
+          {
+            "nombre": "Tribunal de Municipio Ordinario y Ejecutor de Medidas del Municipio Mariño del Segundo Circuito."
+          },
+          {
+            "nombre": "Juzgado del Municipio Andrés Eloy Blanco."
+          },
+          {
+            "nombre": "Juzgado de los Municipios Bolívar y Mejías."
+          },
+          {
+            "nombre": "Juzgado del Municipio Andrés Mata."
+          },
+          {
+            "nombre": "Juzgado del Municipio Bermúdez."
+          },
+          {
+            "nombre": "Juzgado del Municipio Mariño."
+          },
+          {
+            "nombre": "Juzgado del Municipio Valdéz."
+          },
+          {
+            "nombre": "Juzgado Primero de Primera Instancia Municipal en Funciones de Control, Extensión Carúpano."
+          },
+          {
+            "nombre": "Juzgado Segundo de Primera Instancia Municipal en Funciones de Control, sede Cumaná."
+          }
+        ]
+      },
+      {
+        "municipios": [
+          "Arismendi",
+          "Libertador"
+        ],
+        "tribunales": [
+          {
+            "nombre": "Tribunal Primero de Municipio Ordinario y Ejecutor de Medidas de los Municipios Bermúdez, Benítez, Libertador, Andrés Mata y Arismendi del Segundo Circuito."
+          },
+          {
+            "nombre": "Tribunal Segundo de Municipio Ordinario y Ejecutor de Medidas de los Municipios Bermúdez, Benítez, Libertador, Andrés Mata y Arismendi del Segundo Circuito."
+          },
+          {
+            "nombre": "Tribunal Tercero de Municipio Ordinario y Ejecutor de Medidas de los Municipios Bermúdez, Benítez, Libertador, Andrés Mata y Arismendi del Segundo Circuito."
+          },
+          {
+            "nombre": "Tribunal Cuarto de Municipio Ordinario y Ejecutor de Medidas de los Municipios Bermúdez, Benítez, Libertador, Andrés Mata y Arismendi del Segundo Circuito."
+          },
+          {
+            "nombre": "Tribunal Quinto de Municipio Ordinario y Ejecutor de Medidas de los Municipios Bermúdez, Benítez, Libertador, Andrés Mata y Arismendi del Segundo Circuito."
+          },
+          {
+            "nombre": "Juzgado Ejecutor de Medidas de los Municipios Bermúdez, Arismendi, Andrés Mata, Benítez y Libertador."
+          }
+        ]
+      },
+      {
+        "municipios": [
+          "Cajigal"
+        ],
+        "tribunales": [
+          {
+            "nombre": "Tribunal de Municipio Ordinario y Ejecutor de Medidas del Municipio Cajigal del Segundo Circuito."
+          },
+          {
+            "nombre": "Juzgado del Municipio Cajigal."
+          },
+          {
+            "nombre": "Juzgado Ejecutor de Medidas de los Municipios Valdéz, Cajigal y Mariño."
+          }
+        ]
+      },
+      {
+        "municipios": [
+          "Arismendi"
+        ],
+        "tribunales": [
+          {
+            "nombre": "Juzgado del Municipio Arismendi."
+          }
+        ]
+      },
+      {
+        "municipios": [
+          "Libertador"
+        ],
+        "tribunales": [
+          {
+            "nombre": "Juzgado de los Municipios Benítez y Libertador."
+          }
+        ]
+      },
+      {
+        "municipios": [
+          "Montes",
+          "Sucre"
+        ],
+        "tribunales": [
+          {
+            "nombre": "Juzgado Ejecutor de Medidas de los Municipios Sucre, Cruz Salmerón Acosta y Montes."
+          }
+        ]
+      }
+    ]
+  }
+]

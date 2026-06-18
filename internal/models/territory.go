@@ -23,3 +23,14 @@ type Parroquia struct {
 	MunicipioID uint   `gorm:"not null" json:"municipio_id"`
 	Nombre      string `gorm:"type:varchar(100);not null" json:"nombre"`
 }
+
+// Tribunal representa un tribunal judicial del sistema de justicia venezolano.
+// Los tribunales de categoría "Superior" y "Primera Instancia" son estadales (usan EstadoID).
+// Los de categoría "Municipio" son municipales y pueden pertenecer a varios municipios (many-to-many).
+type Tribunal struct {
+	ID         uint        `gorm:"primaryKey;autoIncrement" json:"id"`
+	Nombre     string      `gorm:"type:varchar(500);not null" json:"nombre"`
+	Categoria  string      `gorm:"type:varchar(50);not null" json:"categoria"` // "Superior", "Primera Instancia", "Municipio"
+	EstadoID   *uint       `gorm:"index" json:"estado_id,omitempty"`
+	Municipios []Municipio `gorm:"many2many:tribunal_municipios;" json:"municipios,omitempty"`
+}

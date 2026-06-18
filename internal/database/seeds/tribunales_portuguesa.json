@@ -1,0 +1,464 @@
+[
+  {
+    "estado": "Portuguesa",
+    "tribunales_estadales": [
+      {
+        "nombre": "Corte de Apelaciones.",
+        "categoria": "Superior"
+      },
+      {
+        "nombre": "Juzgado Superior Civil, Mercantil, Tránsito, Bancario. Guanare.",
+        "categoria": "Superior"
+      },
+      {
+        "nombre": "Juzgado Superior en lo Civil, Mercantil, del Tránsito y Menores.",
+        "categoria": "Superior"
+      },
+      {
+        "nombre": "Juzgado Primero Superior del Trabajo.",
+        "categoria": "Superior"
+      },
+      {
+        "nombre": "Tribunal Superior de Protección de Niño, Niñas y Adolescentes.",
+        "categoria": "Superior"
+      },
+      {
+        "nombre": "Tribunal Superior Agrario.",
+        "categoria": "Superior"
+      },
+      {
+        "nombre": "Juzgado Superior Estadal Contencioso Administrativo sede Guanare.",
+        "categoria": "Superior"
+      },
+      {
+        "nombre": "Tribunal Primero de Primera Instancia en funciones de Control.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Segundo de Primera Instancia en funciones de Control.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Tercero de Primera Instancia en funciones de Control.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Cuarto de Primera Instancia en funciones de Control.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Primero de Primera Instancia en funciones de Juicio.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Segundo de Primera Instancia en funciones de Juicio.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Tercero de Primera Instancia en funciones de Juicio.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Cuarto de Primera Instancia en funciones de Juicio.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Primero de Primera Instancia en funciones de Ejecución.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Segundo de Primera Instancia en funciones de Ejecución.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Tercero de Primera Instancia en funciones de Ejecución.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Primero de Primera Instancia en funciones de Control LOPNA.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Segundo de Primera Instancia en funciones de Control LOPNA.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Primero de Primera Instancia en funciones de Juicio LOPNA.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Primero de Primera Instancia en funciones de Ejecución LOPNA.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Juzgado Segundo de Primera Instancia Municipal en Funciones de Control, extensión Acarigua.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Juzgado Primero de Primera Instancia en lo Civil, Mercantil y del Tránsito.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Juzgado Segundo de Primera Instancia en lo Civil, Mercantil y del Tránsito.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Juzgado de Protección LOPNA.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Juzgado Primero de Primera Instancia de Sustanciación, Mediación y Ejecución del Trabajo.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Juzgado Segundo de Primera Instancia de Sustanciación, Mediación y Ejecución del Trabajo.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Juzgado Tercero de Primera Instancia de Sustanciación, Mediación y Ejecución del Trabajo.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Juzgado Primero de Primera Instancia de Juicio del Trabajo.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Juzgado Segundo de Primera Instancia de Juicio del Trabajo.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Segundo de Primera Instancia de Sustanciación, Mediación y Ejecución para el Régimen Procesal Transitorio del Trabajo.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Segundo de Juicio para el Régimen Procesal Transitorio del Trabajo.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Primero de Primera Instancia de Mediación, Sustanciación, Ejecución y Régimen Transitorio. Sede Acarigua.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Primero de Primera Instancia de Juicio y Régimen Transitorio. Sede Acarigua.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Primero de Primera Instancia en funciones de Control.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Segundo de Primera Instancia en funciones de Control.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Tercero de Primera Instancia en funciones de Control.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Primero de Primera Instancia en funciones de Juicio.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Segundo de Primera Instancia en funciones de Juicio.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Tercero de Primera Instancia en funciones de Juicio.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Primero de Primera Instancia en funciones de Ejecución.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Segundo de Primera Instancia en funciones de Ejecución.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Primero de Primera Instancia en lo Penal en funciones de Control LOPNA.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Segundo de Primera Instancia en lo Penal en funciones de Control LOPNA.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Primero de Primera Instancia en lo Penal en funciones de Juicio LOPNA.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Primero de Primera Instancia en lo Penal en funciones de Ejecución LOPNA.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Juzgado de Primera Instancia en lo Civil, Mercantil y del Tránsito.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Segundo de Primera Instancia en lo Civil, Mercantil y del Tránsito del Primer Circuito.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Juzgado Segundo de Primera Instancia Agraria.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Juzgado de Protección LOPNA.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Juzgado Primero de Primera Instancia de Sustanciación, Mediación y Ejecución del Trabajo.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Juzgado Segundo de Primera Instancia de Sustanciación, Mediación y Ejecución del Trabajo.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Juzgado Tercero de Primera Instancia de Sustanciación, Mediación y Ejecución del Trabajo, con competencia para el Régimen Procesal Transitorio.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Juzgado Primero de Primera Instancia de Juicio del Trabajo, con competencia para el Régimen Procesal Transitorio.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Primero de Primera Instancia de Sustanciación, Mediación y Ejecución para el Régimen Procesal Transitorio del Trabajo.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Primero de Juicio para el Régimen Procesal Transitorio del Trabajo.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Primero de Primera Instancia de Mediación y Sustanciación.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Segundo de Primera Instancia de Mediación y Sustanciación.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Primero de Primera Instancia en Juicio.",
+        "categoria": "Primera Instancia"
+      }
+    ],
+    "tribunales_municipales": [
+      {
+        "municipios": [
+          "Guanare"
+        ],
+        "tribunales": [
+          {
+            "nombre": "Tribunal Primero de Municipio Ordinario y Ejecutor de Medidas del Municipio Guanare del Primer Circuito."
+          },
+          {
+            "nombre": "Tribunal Segundo de Municipio Ordinario y Ejecutor de Medidas del Municipio Guanare del Primer Circuito."
+          },
+          {
+            "nombre": "Tribunal Tercero de Municipio Ordinario y Ejecutor de Medidas del Municipio Guanare del Primer Circuito."
+          },
+          {
+            "nombre": "Tribunal Cuarto de Municipio Ordinario y Ejecutor de Medidas del Municipio Guanare del Primer Circuito."
+          },
+          {
+            "nombre": "Juzgado Primero del Municipio Guanare."
+          },
+          {
+            "nombre": "Juzgado Segundo del Municipio Guanare."
+          }
+        ]
+      },
+      {
+        "municipios": [],
+        "tribunales": [
+          {
+            "nombre": "Tribunal de Municipio Ordinario y Ejecutor de Medidas del Municipio Monseñor José Vicente de Unda del Primer Circuito."
+          },
+          {
+            "nombre": "Tribunal de Municipio Ordinario y Ejecutor de Medidas del Municipio Papelón del Primer Circuito."
+          },
+          {
+            "nombre": "Juzgado del Municipio Monseñor José Vicente Unda."
+          },
+          {
+            "nombre": "Juzgado Primero de Primera Instancia Municipal en Funciones de Control, extensión Acarigua."
+          }
+        ]
+      },
+      {
+        "municipios": [
+          "San Genaro de Boconoíto"
+        ],
+        "tribunales": [
+          {
+            "nombre": "Tribunal de Municipio Ordinario y Ejecutor de Medidas del Municipio San Genaro de Boconoito del Primer Circuito."
+          },
+          {
+            "nombre": "Juzgado del Municipio San Genaro de Boconoito."
+          }
+        ]
+      },
+      {
+        "municipios": [
+          "Sucre"
+        ],
+        "tribunales": [
+          {
+            "nombre": "Tribunal de Municipio Ordinario y Ejecutor de Medidas del Municipio Sucre del Primer Circuito."
+          },
+          {
+            "nombre": "Juzgado del Municipio Sucre."
+          }
+        ]
+      },
+      {
+        "municipios": [
+          "Guanarito"
+        ],
+        "tribunales": [
+          {
+            "nombre": "Tribunal de Municipio Ordinario y Ejecutor de Medidas del Municipio Guanarito del Primer Circuito."
+          },
+          {
+            "nombre": "Juzgado de los Municipios Guanarito y Papelón."
+          },
+          {
+            "nombre": "Juzgado Primero Ejecutor de Medidas de los Municipios Guanarito y Papelón."
+          }
+        ]
+      },
+      {
+        "municipios": [
+          "Esteller"
+        ],
+        "tribunales": [
+          {
+            "nombre": "Tribunal Primero de Municipio Ordinario y Ejecutor de Medidas de los Municipios Turén, Santa Rosalía y Esteller del Segundo Circuito."
+          },
+          {
+            "nombre": "Tribunal Segundo de Municipio Ordinario y Ejecutor de Medidas de los Municipios Turén, Santa Rosalía y Esteller."
+          },
+          {
+            "nombre": "Tribunal Tercero de Municipio Ordinario y Ejecutor de Medidas de los Municipios Turén, Santa Rosalía y Esteller del Segundo Circuito."
+          },
+          {
+            "nombre": "Juzgado del Municipio Esteller."
+          },
+          {
+            "nombre": "Juzgado Ejecutor de Medidas del Municipio Esteller."
+          }
+        ]
+      },
+      {
+        "municipios": [
+          "Araure",
+          "Páez"
+        ],
+        "tribunales": [
+          {
+            "nombre": "Tribunal Primero de Municipio Ordinario y Ejecutor de Medidas de los Municipios Páez y Araure del Segundo Circuito."
+          },
+          {
+            "nombre": "Tribunal Segundo de Municipio Ordinario y Ejecutor de Medidas de los Municipios Páez y Araure del Segundo Circuito."
+          },
+          {
+            "nombre": "Tribunal Tercero de Municipio Ordinario y Ejecutor de Medidas de los Municipios Páez y Araure del Segundo Circuito."
+          },
+          {
+            "nombre": "Tribunal Cuarto de Municipio Ordinario y Ejecutor de Medidas de los Municipios Páez y Araure del Segundo Circuito."
+          }
+        ]
+      },
+      {
+        "municipios": [
+          "Agua Blanca",
+          "San Rafael de Onoto"
+        ],
+        "tribunales": [
+          {
+            "nombre": "Tribunal de Municipio Ordinario y Ejecutor de Medidas de los Municipios Agua Blanca y San Rafael de Onoto del Segundo Circuito."
+          },
+          {
+            "nombre": "Juzgado del Municipio Agua Blanca y San Rafael de Onoto."
+          }
+        ]
+      },
+      {
+        "municipios": [
+          "Ospino"
+        ],
+        "tribunales": [
+          {
+            "nombre": "Tribunal de Municipio Ordinario y Ejecutor de Medidas del Municipio Ospino del Segundo Circuito."
+          },
+          {
+            "nombre": "Juzgado del Municipio Ospino."
+          }
+        ]
+      },
+      {
+        "municipios": [
+          "Araure"
+        ],
+        "tribunales": [
+          {
+            "nombre": "Juzgado del Municipio Araure."
+          }
+        ]
+      },
+      {
+        "municipios": [
+          "Turén"
+        ],
+        "tribunales": [
+          {
+            "nombre": "Juzgado de los Municipios Turen y Santa Rosalía."
+          }
+        ]
+      },
+      {
+        "municipios": [
+          "Páez"
+        ],
+        "tribunales": [
+          {
+            "nombre": "Juzgado Primero del Municipio Páez."
+          },
+          {
+            "nombre": "Juzgado Segundo del Municipio Páez."
+          },
+          {
+            "nombre": "Juzgado Segundo de Primera Instancia Municipal en Funciones de Control, extensión Acarigua (Municipio Páez)."
+          }
+        ]
+      },
+      {
+        "municipios": [
+          "Agua Blanca",
+          "Páez"
+        ],
+        "tribunales": [
+          {
+            "nombre": "Juzgado Ejecutor de Medidas de los Municipios Páez y Agua Blanca."
+          }
+        ]
+      },
+      {
+        "municipios": [
+          "Guanare",
+          "San Genaro de Boconoíto",
+          "Sucre"
+        ],
+        "tribunales": [
+          {
+            "nombre": "Juzgado Primero Ejecutor de Medidas de los Municipios Guanare, San Genaro de Boconoito, Sucre y Monseñor Jose Vicente Unda."
+          },
+          {
+            "nombre": "Juzgado Segundo Ejecutor de Medidas de los Municipios Guanare, San Genaro de Boconoito, Sucre y Monseñor Jose Vicente Unda."
+          }
+        ]
+      }
+    ]
+  }
+]

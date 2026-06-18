@@ -1,0 +1,535 @@
+[
+  {
+    "estado": "Lara",
+    "tribunales_estadales": [
+      {
+        "nombre": "Corte de Apelaciones Sala 1",
+        "categoria": "Superior"
+      },
+      {
+        "nombre": "Corte de Apelaciones Sala 2",
+        "categoria": "Superior"
+      },
+      {
+        "nombre": "Corte de Apelaciones Sala 3",
+        "categoria": "Superior"
+      },
+      {
+        "nombre": "Juzgado Superior Contencioso Tributario",
+        "categoria": "Superior"
+      },
+      {
+        "nombre": "Juzgado Superior Primero en lo Civil, Mercantil",
+        "categoria": "Superior"
+      },
+      {
+        "nombre": "Juzgado Superior Segundo en lo Civil, Mercantil",
+        "categoria": "Superior"
+      },
+      {
+        "nombre": "Juzgado Superior Tercero en lo Civil, Mercantil y del Tránsito",
+        "categoria": "Superior"
+      },
+      {
+        "nombre": "Juzgado Superior Civil Contencioso Administrativo",
+        "categoria": "Superior"
+      },
+      {
+        "nombre": "Juzgado Superior Tercero Agrario",
+        "categoria": "Superior"
+      },
+      {
+        "nombre": "Juzgado Superior del Trabajo",
+        "categoria": "Superior"
+      },
+      {
+        "nombre": "Juzgado Superior Primero del Trabajo",
+        "categoria": "Superior"
+      },
+      {
+        "nombre": "Juzgado Superior Segundo del Trabajo",
+        "categoria": "Superior"
+      },
+      {
+        "nombre": "Juzgado Superior de Protección de Niños, Niñas y Adolescentes con sede en Barquisimeto",
+        "categoria": "Superior"
+      },
+      {
+        "nombre": "Corte de Apelaciones de Violencia contra la Mujer",
+        "categoria": "Superior"
+      },
+      {
+        "nombre": "Tribunal Primero de Primera Instancia en Funciones de Control",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Segundo de Primera Instancia en Funciones de Control",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Tercero de Primera Instancia en Funciones de Control",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Cuarto de Primera Instancia en Funciones de Control",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Quinto de Primera Instancia en Funciones de Control",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Sexto de Primera Instancia en Funciones de Control",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Séptimo de Primera Instancia en Funciones de Control",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Octavo de Primera Instancia en Funciones de Control",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Noveno de Primera Instancia en Funciones de Control",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Primero de Primera Instancia en Funciones de Juicio",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Segundo de Primera Instancia en Funciones de Juicio",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Tercero de Primera Instancia en Funciones de Juicio",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Cuarto de Primera Instancia en Funciones de Juicio",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Quinto de Primera Instancia en Funciones de Juicio",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Sexto de Primera Instancia en Funciones de Juicio",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Primero de Primera Instancia en Funciones de Ejecución",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Segundo de Primera Instancia en Funciones de Ejecución",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Tercero de Primera Instancia en Funciones de Ejecución",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Cuarto de Primera Instancia en Funciones de Ejecución",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Juzgado Primero de Primera Instancia en lo Penal en Funciones de Control del L.O.P.N.A",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Juzgado Segundo de Primera Instancia en lo Penal en Funciones de Control del L.O.P.N.A",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Juzgado Primero de Primera Instancia en lo Penal en Funciones de Juicio del L.O.P.N.A",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Juzgado Primero de Primera Instancia en lo Penal en Funciones de Ejecución del L.O.P.N.A",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Primero de Primera Instancia en Funciones de Control Municipal. Extensión Barquisimeto",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Segundo de Primera Instancia en Funciones de Control Municipal. Extensión Barquisimeto",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Juzgado Primero de Primera Instancia en lo Civil, Mercantil y Tránsito",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Juzgado Segundo de Primera Instancia en lo Civil, Mercantil y Tránsito",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Juzgado Tercero de Primera Instancia en lo Civil, Mercantil y Tránsito",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Juzgado de Protección del Niño y del Adolescente",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Juzgado Primero de Primera Instancia Agraria",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Juzgado Primero de Sustanciación, Mediación y Ejecución del Trabajo",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Juzgado Segundo de Sustanciación, Mediación y Ejecución del Trabajo",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Juzgado Tercero de Sustanciación, Mediación y Ejecución del Trabajo",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Juzgado Cuarto de Sustanciación, Mediación y Ejecución del Trabajo",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Juzgado Quinto de Sustanciación, Mediación y Ejecución del Trabajo",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Juzgado Sexto de Sustanciación, Mediación y Ejecución del Trabajo",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Juzgado Séptimo de Sustanciación, Mediación y Ejecución del Trabajo",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Juzgado Octavo de Sustanciación, Mediación y Ejecución del Trabajo",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Juzgado Primero de Juicio del Trabajo",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Juzgado Segundo de Juicio del Trabajo",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Juzgado Tercero de Juicio del Trabajo",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Juzgado Primero Transitorio de Sustanciación, Mediación y Ejecución del Trabajo",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Juzgado Segundo Transitorio de Sustanciación, Mediación y Ejecución del Trabajo",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Juzgado Primero Transitorio de Juicio del Trabajo",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Juzgado Primero de Primera Instancia en función de Control, Audiencias y Medidas con competencia de delitos de violencia contra la mujer",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Juzgado Segundo de Primera Instancia en función de Control, Audiencias y Medidas con competencia de delitos de violencia contra la mujer",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Juzgado Tercero de Primera Instancia en función de Control, Audiencias y Medidas con competencia de delitos de violencia contra la mujer",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Juzgado Cuarto de Primera Instancia en función de Control, Audiencias y Medidas con competencia de delitos de violencia contra la mujer",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Juzgado Primero de Primera Instancia en función de Juicio con competencia de delitos de violencia contra la mujer",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Juzgado Segundo de Primera Instancia en función de Juicio con competencia de delitos de violencia contra la mujer",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Juzgado Primero de Primera Instancia en función de Ejecución con competencia de delitos de violencia contra la mujer",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Primero de Primera Instancia de Mediación, Sustanciación y Ejecución",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Segundo de Primera Instancia de Mediación, Sustanciación y Ejecución",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Tercero de Primera Instancia de Mediación, Sustanciación y Ejecución",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Cuarto de Primera Instancia de Mediación, Sustanciación y Ejecución",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Juzgado Primero de Primera Instancia de Juicio de Protección de Niños, Niñas y Adolescentes",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Noveno de Primera Instancia de Mediación, Sustanciación y Ejecución",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Primero de Primera Instancia de Ejecución de Protección de Niños, Niñas y Adolescentes. Extensión Barquisimeto",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Décimo de Primera Instancia en Funciones de Control",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Undécimo de Primera Instancia en Funciones de Control",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Duodécimo de Primera Instancia en Funciones de Control",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Juzgado Primero de Primera Instancia en lo Penal en Funciones de Control del L.O.P.N.A.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Juzgado Segundo de Primera Instancia en lo Penal en Funciones de Control del L.O.P.N.A.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Juzgado Primero de Primera Instancia en lo Penal en Funciones de Juicio del L.O.P.N.A.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Juzgado Primero de Primera Instancia en lo Penal en Funciones de Ejecución del L.O.P.N.A.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Primero de Primera Instancia en Funciones de Juicio",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Primero de Primera Instancia en Funciones de Ejecución",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Juzgado de Protección del Niño y del Adolescente. Municipio Torres",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Juzgado Cuarto de Primera Instancias en lo Civil, Mercantil y Tránsito",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Primero de Primera Instancia de Mediación y Sustanciación de Protección de Niños, Niñas y Adolescentes",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Segundo de Primera Instancia de Mediación y Sustanciación de Protección de Niños, Niñas y Adolescentes",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Primero de Primera Instancia de Juicio de Protección de Niños, Niñas y Adolescentes",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Juzgado Segundo de Primera Instancia Agraria",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Tercero de Primera Instancia en Funciones de Control Municipal. Sede en Municipio Morán",
+        "categoria": "Primera Instancia"
+      }
+    ],
+    "tribunales_municipales": [
+      {
+        "municipios": [
+          "Iribarren"
+        ],
+        "tribunales": [
+          {
+            "nombre": "Tribunal Primero de Municipio Ordinario y Ejecutor de Medidas del Municipio Iribarren"
+          },
+          {
+            "nombre": "Tribunal Segundo de Municipio Ordinario y Ejecutor de Medidas del Municipio Iribarren"
+          },
+          {
+            "nombre": "Tribunal Tercero de Municipio Ordinario y Ejecutor de Medidas del Municipio Iribarren"
+          },
+          {
+            "nombre": "Tribunal Cuarto de Municipio Ordinario y Ejecutor de Medidas del Municipio Iribarren"
+          },
+          {
+            "nombre": "Tribunal Quinto de Municipio Ordinario y Ejecutor de Medidas del Municipio Iribarren"
+          },
+          {
+            "nombre": "Tribunal Sexto de Municipio Ordinario y Ejecutor de Medidas del Municipio Iribarren"
+          },
+          {
+            "nombre": "Tribunal Séptimo de Municipio Ordinario y Ejecutor de Medidas del Municipio Iribarren"
+          },
+          {
+            "nombre": "Juzgado Primero del Municipio Iribarren"
+          },
+          {
+            "nombre": "Juzgado Segundo del Municipio Iribarren"
+          },
+          {
+            "nombre": "Juzgado Tercero del Municipio Iribarren"
+          },
+          {
+            "nombre": "Juzgado Cuarto del Municipio Iribarren"
+          }
+        ]
+      },
+      {
+        "municipios": [
+          "Crespo"
+        ],
+        "tribunales": [
+          {
+            "nombre": "Tribunal de Municipio Ordinario y Ejecutor de Medidas del Municipio Crespo"
+          },
+          {
+            "nombre": "Juzgado del Municipio Crespo"
+          }
+        ]
+      },
+      {
+        "municipios": [
+          "Urdaneta"
+        ],
+        "tribunales": [
+          {
+            "nombre": "Tribunal de Municipio Ordinario y Ejecutor de Medidas del Municipio Urdaneta"
+          },
+          {
+            "nombre": "Juzgado del Municipio Urdaneta"
+          }
+        ]
+      },
+      {
+        "municipios": [
+          "Palavecino",
+          "Simón Planas"
+        ],
+        "tribunales": [
+          {
+            "nombre": "Tribunal Primero de Municipio Ordinario y Ejecutor de Medidas de los Municipios Palavecino y Simón Planas"
+          },
+          {
+            "nombre": "Tribunal Segundo de Municipio Ordinario y Ejecutor de Medidas de los Municipios Palavecino y Simón Planas"
+          },
+          {
+            "nombre": "Tribunal Tercero de Municipio Ordinario y Ejecutor de Medidas de los Municipios Palavecino y Simón Planas"
+          },
+          {
+            "nombre": "Juzgado Primero de los Municipios Palavecino y Simón Planas"
+          },
+          {
+            "nombre": "Juzgado Segundo de los Municipios Palavecino y Simón Planas"
+          },
+          {
+            "nombre": "Juzgado Ejecutor de Medidas de los Municipios Palavecino y Simón Planas"
+          }
+        ]
+      },
+      {
+        "municipios": [
+          "Jiménez",
+          "Andrés Eloy Blanco"
+        ],
+        "tribunales": [
+          {
+            "nombre": "Tribunal Primero de Municipio Ordinario y Ejecutor de Medidas de los Municipios Jiménez y Andrés Eloy Blanco"
+          },
+          {
+            "nombre": "Tribunal Segundo de Municipio Ordinario y Ejecutor de Medidas de los Municipios Jiménez y Andrés Eloy Blanco"
+          },
+          {
+            "nombre": "Tribunal Tercero de Municipio Ordinario y Ejecutor de Medidas de los Municipios Jiménez y Andrés Eloy Blanco"
+          },
+          {
+            "nombre": "Juzgado del Municipio Jiménez"
+          },
+          {
+            "nombre": "Juzgado del Municipio Andrés Eloy Blanco"
+          },
+          {
+            "nombre": "Juzgado Ejecutor de Medidas de los Municipios Jiménez y Andrés Eloy Blanco"
+          }
+        ]
+      },
+      {
+        "municipios": [
+          "Torres"
+        ],
+        "tribunales": [
+          {
+            "nombre": "Tribunal Primero de Municipio Ordinario y Ejecutor de Medidas del Municipio Torres"
+          },
+          {
+            "nombre": "Tribunal Segundo de Municipio Ordinario y Ejecutor de Medidas del Municipio Torres"
+          },
+          {
+            "nombre": "Juzgado del Municipio Torres"
+          },
+          {
+            "nombre": "Juzgado Ejecutor de Medidas del Municipio Torres"
+          }
+        ]
+      },
+      {
+        "municipios": [
+          "Morán"
+        ],
+        "tribunales": [
+          {
+            "nombre": "Tribunal Primero de Municipio Ordinario y Ejecutor de Medidas del Municipio Morán"
+          },
+          {
+            "nombre": "Tribunal Segundo de Municipio Ordinario y Ejecutor de Medidas del Municipio Morán"
+          },
+          {
+            "nombre": "Juzgado del Municipio Morán"
+          },
+          {
+            "nombre": "Juzgado Ejecutor de Medidas del Municipio Morán"
+          }
+        ]
+      },
+      {
+        "municipios": [
+          "Iribarren",
+          "Crespo",
+          "Urdaneta"
+        ],
+        "tribunales": [
+          {
+            "nombre": "Juzgado Primero Ejecutor de Medidas de los Municipios Iribarren, Crespo y Urdaneta"
+          },
+          {
+            "nombre": "Juzgado Segundo Ejecutor de Medidas de los Municipios Iribarren, Crespo y Urdaneta"
+          },
+          {
+            "nombre": "Juzgado Tercero Ejecutor de Medidas de los Municipios Iribarren, Crespo y Urdaneta"
+          }
+        ]
+      }
+    ]
+  }
+]

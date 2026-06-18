@@ -33,10 +33,11 @@ func main() {
 	}
 
 	// 1. Ejecutar Migraciones
-	db.AutoMigrate(&models.Estado{}, &models.Municipio{}, &models.Parroquia{}, &models.IndicadorEconomico{})
+	db.AutoMigrate(&models.Estado{}, &models.Municipio{}, &models.Parroquia{}, &models.IndicadorEconomico{}, &models.Tribunal{})
 
-	// 2. Ejecutar Seeder (Poblar BD)
+	// 2. Ejecutar Seeders (Poblar BD)
 	database.SeedTerritories(db)
+	database.SeedTribunales(db)
 
 	// Inicializar Router
 	r := chi.NewRouter()
@@ -76,7 +77,9 @@ func main() {
 		r.Route("/territorio", func(r chi.Router) {
 			r.Get("/estados", terrHandler.GetEstados)
 			r.Get("/estados/{estado_id}/municipios", terrHandler.GetMunicipios)
+			r.Get("/estados/{estado_id}/tribunales", terrHandler.GetTribunalesEstadales)
 			r.Get("/municipios/{municipio_id}/parroquias", terrHandler.GetParroquias)
+			r.Get("/municipios/{municipio_id}/tribunales", terrHandler.GetTribunalesMunicipales)
 		})
 	})
 

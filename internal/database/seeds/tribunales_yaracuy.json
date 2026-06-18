@@ -1,0 +1,364 @@
+[
+  {
+    "estado": "Yaracuy",
+    "tribunales_estadales": [
+      {
+        "nombre": "Corte de Apelaciones.",
+        "categoria": "Superior"
+      },
+      {
+        "nombre": "Juzgado Superior Primero en lo Civil, Mercantil y del Tránsito.",
+        "categoria": "Superior"
+      },
+      {
+        "nombre": "Juzgado Superior Segundo en lo Civil, Mercantil y del Tránsito.",
+        "categoria": "Superior"
+      },
+      {
+        "nombre": "Corte de Apelaciones LOPNA.",
+        "categoria": "Superior"
+      },
+      {
+        "nombre": "Juzgado Superior Agrario.",
+        "categoria": "Superior"
+      },
+      {
+        "nombre": "Juzgado Superior de Protección de Niños, Niñas y Adolescentes.",
+        "categoria": "Superior"
+      },
+      {
+        "nombre": "Juzgado Superior Laboral.",
+        "categoria": "Superior"
+      },
+      {
+        "nombre": "Tribunal Primero de Control.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Segundo de Control.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Tercero de Control.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Cuarto de Control.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Quinto de Control.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Sexto de Control.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Primero de Juicio.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Segundo de Juicio.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Tercero de Juicio.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Primero de Ejecución.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Segundo de Ejecución.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Primero en Función de Control Municipal.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Segundo en Función de Control Municipal.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Primero de Control del L.O.P.N.A..",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Segundo de Control del L.O.P.N.A..",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Primero de Juicio del L.O.P.N.A..",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Primero de Ejecución del L.O.P.N.A..",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Juzgado Primero de Primera Instancia en lo Civil, Mercantil y del Tránsito.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Juzgado Segundo de Primera Instancia en lo Civil, Mercantil y del Tránsito.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Juzgado Tercero de Primera Instancia en lo Civil, Mercantil y del Tránsito.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal de Protección del Niño y del Adolescente.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Juzgado Primero de Primera Instancia Agraria de los Municipios Independencia, Cocorote, San Felipe, Veroes, la Trinidad, Manuel Monge, Sucre y Bolívar.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Juzgado Segundo de Primera Instancia Agraria de los Municipios Arístides Bastida, José Antonio Páez, Nirgua, Bruzual, Urachiche y Peña.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Primero de Primera Instancia de Sustanciación, Mediación y Ejecución del Nuevo Régimen del Trabajo.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Segundo de Primera Instancia de Sustanciación, Mediación y Ejecución del Nuevo Régimen del Trabajo.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Tercero de Primera Instancia de Sustanciación, Mediación y Ejecución del Nuevo Régimen del Trabajo.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Cuarto de Primera Instancia de Sustanciación, Mediación y Ejecución del Nuevo Régimen del Trabajo.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Primero de Juicio del Trabajo.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Segundo de Juicio del Nuevo Régimen del Trabajo.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Primero de Primera Instancia de Sustanciación, Mediación y Ejecución del Régimen Procesal Transitorio del Trabajo.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Segundo de Primera Instancia de Sustanciación, Mediación y Ejecución del Régimen Procesal Transitorio del Trabajo.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Primero de Juicio del Régimen Procesal Transitorio del Trabajo.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Primero de Primera Instancia de Mediación y Sustanciación del Nuevo Régimen.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Segundo de Primera Instancia de Mediación y Sustanciación del Nuevo Régimen.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Tercero de Primera Instancia de Mediación y Sustanciación del Nuevo Régimen.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Cuarto de Primera Instancia de Mediación y Sustanciación del Nuevo Régimen.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Primero de Primera Instancia de Juicio de Protección del Nuevo Régimen.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Primero de Primera Instancia de Mediación y Sustanciación del Régimen Transitorio.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Segundo de Primera Instancia de Mediación y Sustanciación del Régimen Transitorio.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Primero de Primera Instancia de Juicio del Régimen Transitorio.",
+        "categoria": "Primera Instancia"
+      }
+    ],
+    "tribunales_municipales": [
+      {
+        "municipios": [
+          "Cocorote",
+          "Independencia",
+          "San Felipe"
+        ],
+        "tribunales": [
+          {
+            "nombre": "Tribunal Primero de Municipio Ordinario y Ejecutor de Medidas de los Municipios San Felipe, Independencia y Cocorote."
+          },
+          {
+            "nombre": "Tribunal Segundo de Municipio Ordinario y Ejecutor de Medidas de los Municipios San Felipe, Independencia y Cocorote."
+          },
+          {
+            "nombre": "Tribunal Tercero de Municipio Ordinario y Ejecutor de Medidas de los Municipios San Felipe, Independencia y Cocorote."
+          }
+        ]
+      },
+      {
+        "municipios": [
+          "La Trinidad",
+          "Sucre"
+        ],
+        "tribunales": [
+          {
+            "nombre": "Tribunal Primero de Municipio Odinario y Ejecutor de Medidas de los Municipios Sucre, La Trinidad y Arístides Bastidas."
+          },
+          {
+            "nombre": "Tribunal Segundo de Municipio Odinario y Ejecutor de Medidas de los Municipios Sucre, La Trinidad y Arístides Bastidas."
+          }
+        ]
+      },
+      {
+        "municipios": [
+          "Manuel Monge",
+          "Veroes"
+        ],
+        "tribunales": [
+          {
+            "nombre": "Tribunal de Municipio Ordinario y Ejecutor de Medidas de los Municipios Bolívar, Manuel Monge y Veroes."
+          }
+        ]
+      },
+      {
+        "municipios": [
+          "Bruzual"
+        ],
+        "tribunales": [
+          {
+            "nombre": "Tribunal de Municipio Ordinario y Ejecutor de Medidas del Municipio Bruzual."
+          },
+          {
+            "nombre": "Juzgado del Municipio Bruzual."
+          }
+        ]
+      },
+      {
+        "municipios": [
+          "Urachiche"
+        ],
+        "tribunales": [
+          {
+            "nombre": "Tribunal de Municipio Ordinario y Ejecutor de Medidas de los Municipios Urachiche y José Antonio Páez."
+          },
+          {
+            "nombre": "Juzgado de los Municipios Urachiche y José Antonio Páez."
+          }
+        ]
+      },
+      {
+        "municipios": [],
+        "tribunales": [
+          {
+            "nombre": "Tribunal de Municipio Ordinario y Ejecutor de Medidas del Municipio Peña."
+          },
+          {
+            "nombre": "Juzgado del Municipio Peña."
+          }
+        ]
+      },
+      {
+        "municipios": [
+          "Nirgua"
+        ],
+        "tribunales": [
+          {
+            "nombre": "Tribunal Primero de Municipio Ordinario y Ejecutor de Medidas del Municipio Nirgua."
+          },
+          {
+            "nombre": "Tribunal Segundo de Municipio Ordinario y Ejecutor de Medidas del Municipio Nirgua."
+          },
+          {
+            "nombre": "Juzgado del Municipio Nirgua."
+          },
+          {
+            "nombre": "Juzgado Ejecutor de Medidas del Municipio Nirgua."
+          }
+        ]
+      },
+      {
+        "municipios": [
+          "Cocorote",
+          "Independencia",
+          "San Felipe",
+          "Veroes"
+        ],
+        "tribunales": [
+          {
+            "nombre": "Juzgado Primero de los Municipios San Felipe, Cocorote, Independencia y Veroes."
+          },
+          {
+            "nombre": "Juzgado Segundo de los Municipios San Felipe, Cocorote, Independencia y Veroes."
+          }
+        ]
+      },
+      {
+        "municipios": [
+          "Arístides Bastidas",
+          "La Trinidad",
+          "Sucre"
+        ],
+        "tribunales": [
+          {
+            "nombre": "Juzgado de los Municipios Sucre, La Trinidad y Aristides Bastidas."
+          }
+        ]
+      },
+      {
+        "municipios": [
+          "Bolívar",
+          "Manuel Monge"
+        ],
+        "tribunales": [
+          {
+            "nombre": "Juzgado de los Municipios Bolivar y Manuel Monge."
+          }
+        ]
+      },
+      {
+        "municipios": [
+          "Bolívar",
+          "Cocorote",
+          "Independencia",
+          "Manuel Monge",
+          "San Felipe",
+          "Veroes"
+        ],
+        "tribunales": [
+          {
+            "nombre": "Juzgado Ejecutor de Medidas de los Municipios San Felipe, Cocorote, Independencia, Veroes, Bolivar y Manuel Monge."
+          }
+        ]
+      },
+      {
+        "municipios": [
+          "Arístides Bastidas",
+          "Bruzual",
+          "La Trinidad",
+          "Sucre",
+          "Urachiche"
+        ],
+        "tribunales": [
+          {
+            "nombre": "Juzgado Ejecutor de Medidas de los Municipios Sucre, La Trinidad, Aristides Bastidas, Bruzual, Urachiche, José Antonio Páez y Peña."
+          }
+        ]
+      }
+    ]
+  }
+]

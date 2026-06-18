@@ -62,6 +62,18 @@ definitions:
         example: Catedral
         type: string
     type: object
+  dto.TribunalResponse:
+    properties:
+      categoria:
+        example: Superior
+        type: string
+      id:
+        example: 1
+        type: integer
+      nombre:
+        example: Corte de Apelaciones Sala 1
+        type: string
+    type: object
   dto.UCAUUResponse:
     properties:
       fecha:
@@ -206,6 +218,41 @@ paths:
       summary: Obtener municipios por estado
       tags:
       - Territorio
+  /api/v1/territorio/estados/{estado_id}/tribunales:
+    get:
+      description: Retorna la lista de tribunales de categoría Superior y Primera
+        Instancia pertenecientes a un estado
+      parameters:
+      - description: ID del Estado
+        in: path
+        name: estado_id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/dto.GenericResponse'
+            - properties:
+                data:
+                  items:
+                    $ref: '#/definitions/dto.TribunalResponse'
+                  type: array
+              type: object
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/dto.GenericResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/dto.GenericResponse'
+      summary: Obtener tribunales estadales por estado
+      tags:
+      - Territorio
   /api/v1/territorio/municipios/{municipio_id}/parroquias:
     get:
       description: Retorna la lista de parroquias pertenecientes a un municipio específico
@@ -238,6 +285,41 @@ paths:
           schema:
             $ref: '#/definitions/dto.GenericResponse'
       summary: Obtener parroquias por municipio
+      tags:
+      - Territorio
+  /api/v1/territorio/municipios/{municipio_id}/tribunales:
+    get:
+      description: Retorna la lista de tribunales de categoría Municipio asociados
+        a un municipio específico, incluyendo los compartidos con otros municipios
+      parameters:
+      - description: ID del Municipio
+        in: path
+        name: municipio_id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/dto.GenericResponse'
+            - properties:
+                data:
+                  items:
+                    $ref: '#/definitions/dto.TribunalResponse'
+                  type: array
+              type: object
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/dto.GenericResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/dto.GenericResponse'
+      summary: Obtener tribunales municipales por municipio
       tags:
       - Territorio
 swagger: "2.0"

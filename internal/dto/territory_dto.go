@@ -16,3 +16,9 @@ type ParroquiaResponse struct {
 	MunicipioID uint   `json:"municipio_id" example:"10"`
 	Nombre      string `json:"nombre" example:"Catedral"`
 }
+
+type TribunalResponse struct {
+	ID        uint   `json:"id" example:"1"`
+	Nombre    string `json:"nombre" example:"Corte de Apelaciones Sala 1"`
+	Categoria string `json:"categoria" example:"Superior"`
+}

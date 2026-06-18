@@ -1,0 +1,354 @@
+[
+  {
+    "estado": "Trujillo",
+    "tribunales_estadales": [
+      {
+        "nombre": "Corte de Apelaciones.",
+        "categoria": "Superior"
+      },
+      {
+        "nombre": "Corte de Apelaciones L.O.P.N.A.",
+        "categoria": "Superior"
+      },
+      {
+        "nombre": "Juzgado Superior Civil, Mercantil, Tránsito y Menores.",
+        "categoria": "Superior"
+      },
+      {
+        "nombre": "Juzgado Superior Séptimo Agrario.",
+        "categoria": "Superior"
+      },
+      {
+        "nombre": "Tribunal Superior del Trabajo.",
+        "categoria": "Superior"
+      },
+      {
+        "nombre": "Tribunal Superior Primero de Protección de Niños, Niñas y Adolescentes.",
+        "categoria": "Superior"
+      },
+      {
+        "nombre": "Juzgado Superior Estadal Contencioso Administrativo.",
+        "categoria": "Superior"
+      },
+      {
+        "nombre": "Tribunal Primero de Control.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Segundo de Control.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Tercero de Control.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Cuarto de Control.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Quinto de Control.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Sexto de Control.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Séptimo de Control.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Primero de Juicio.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Segundo de Juicio.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Tercero de Juicio.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Cuarto de Juicio.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Primero de Ejecución.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Segundo de Ejecución.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Tercero de Ejecución.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Primero de Primera Instancia en lo Penal en Funciones de Control de la sección de Responsabilidad Penal del Adolescente.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Primero de Primera Instancia en lo Penal en Funciones de Juicio de la sección de Responsabilidad Penal del Adolescente.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Primero de Primera Instancia en lo Penal en Funciones de Ejecución de la sección de Responsabilidad Penal del Adolescente.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Juzgado Primero de Primera Instancia en lo Civil y Mercantil.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Juzgado Segundo de Primera Instancia en lo Civil.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Juzgado Tercero de Primera Instancia en lo Civil.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Primero de Protección del Niño y Adolescente.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Segundo de Protección del Niño y Adolescente.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Juzgado Primero de Primera Instancia Agraria.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Juzgado Segundo de Primera Instancia Agraria.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Primero de Primera Instancia de Sustanciación, Mediación y Ejecución del Trabajo.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Segundo de Primera Instancia de Sustanciación, Mediación y Ejecución del Trabajo.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Tercero de Primera Instancia de Sustanciación, Mediación y Ejecución del Trabajo.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Cuarto de Primera Instancia de Sustanciación, Mediación y Ejecución del Trabajo.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Quinto de Primera Instancia de Sustanciación, Mediación y Ejecución del Trabajo.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Primero de Primera Instancia de Juicio del Trabajo.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Segundo de Primera Instancia de Juicio del Trabajo.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Juzgado Primero de Primera Instancia en función de Control, Audiencias y Medidas con competencia de delitos de violencia contra la mujer. Trujillo.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Juzgado Segundo de Primera Instancia en función de Control, Audiencias y Medidas con competencia de delitos de violencia contra la mujer.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Juzgado Tercero de Primera Instancia en función de Control, Audiencias y Medidas con competencia de delitos de violencia contra la mujer.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Juzgado Primero de Primera Instancia en función de Juicio con competencia de delitos de violencia contra la mujer.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Juzgado Segundo de Primera Instancia en función de Juicio con competencia de delitos de violencia contra la mujer.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Primero en funciones de Ejecución con competencia en delitos de violencia contra la mujer.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Juzgado Primero de Primera Instancia en función de Control, Audiencias y Medidas con competencia de delitos de violencia contra la mujer.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Primero de Primera de Primera Instancia de Mediación y Sustanciación.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Primero de Primera Instancia de Juicio.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Segundo de Primera de Primera Instancia de Mediación y Sustanciación.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Tercero de Primera de Primera Instancia de Mediación y Sustanciación.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Cuarto de Primera de Primera Instancia de Mediación y Sustanciación.",
+        "categoria": "Primera Instancia"
+      },
+      {
+        "nombre": "Tribunal Quinto de Primera de Primera Instancia de Mediación y Sustanciación.",
+        "categoria": "Primera Instancia"
+      }
+    ],
+    "tribunales_municipales": [
+      {
+        "municipios": [
+          "Escuque",
+          "Motatán",
+          "San Rafael de Carvajal",
+          "Valera"
+        ],
+        "tribunales": [
+          {
+            "nombre": "Tribunal Primero de Municipio Ordinario y Ejecutor de Medidas de los Municipios Valera, Motatán, San Rafael de Carvajal y Escuque."
+          },
+          {
+            "nombre": "Tribunal Segundo de Municipio Ordinario y Ejecutor de Medidas de los Municipios Valera, Motatán, San Rafael de Carvajal y Escuque."
+          },
+          {
+            "nombre": "Tribunal Tercero de Municipio Ordinario y Ejecutor de Medidas de los Municipios Valera, Motatán, San Rafael de Carvajal y Escuque."
+          },
+          {
+            "nombre": "Juzgado Primero de los Municipios Valera, Motatán, San Rafael de Carvajal y Escuque."
+          },
+          {
+            "nombre": "Juzgado Segundo de los Municipios Valera, Motatán, San Rafael de Carvajal y Escuque."
+          }
+        ]
+      },
+      {
+        "municipios": [
+          "Urdaneta"
+        ],
+        "tribunales": [
+          {
+            "nombre": "Tribunal de Municipio Ordinario y Ejecutor de Medidas del Municipio Urdaneta."
+          },
+          {
+            "nombre": "Juzgado del Municipio Urdaneta."
+          }
+        ]
+      },
+      {
+        "municipios": [
+          "Pampanito",
+          "Pampán",
+          "Trujillo"
+        ],
+        "tribunales": [
+          {
+            "nombre": "Tribunal Primero de Municipio Ordinario y Ejecutor de Medidas de los Municipios Trujillo, Pampan y Pampanito."
+          },
+          {
+            "nombre": "Tribunal Segundo de Municipio Ordinario y Ejecutor de Medidas de los Municipios Trujillo, Pampan y Pampanito."
+          },
+          {
+            "nombre": "Juzgado de los Municipios, Trujillo, Pampá y Pampanito."
+          },
+          {
+            "nombre": "Juzgado Ejecutor de Medidas de los Municipios Trujillo, Pampán y Pampanito."
+          }
+        ]
+      },
+      {
+        "municipios": [
+          "Candelaria",
+          "Carache"
+        ],
+        "tribunales": [
+          {
+            "nombre": "Tribunal de Municipio Ordinario y Ejecutor de Medidas de los Municipios Carache, Candelaria y José Felipe Márquez Cañizalez."
+          },
+          {
+            "nombre": "Juzgado de los Municipios, Carache, Candelaria y José Felipe Márquez Cañizalez."
+          }
+        ]
+      },
+      {
+        "municipios": [
+          "La Ceiba",
+          "Miranda",
+          "Monte Carmelo",
+          "Rafael Rangel",
+          "Sucre"
+        ],
+        "tribunales": [
+          {
+            "nombre": "Tribunal Primero de Municipio Ordinario y Ejecutor de Medidas de los Municipios Rafael Rangel, Bolívar, Sucre, Miranda, La Ceiba, Andrés Bello y Monte Carmelo."
+          },
+          {
+            "nombre": "Tribunal Segundo de Municipio Ordinario y Ejecutor de Medidas de los Municipios Rafael Rangel, Bolívar, Sucre, Miranda, La Ceiba, Andrés Bello y Monte Carmelo."
+          },
+          {
+            "nombre": "Juzgado de los Municipios Rafael Rangel, Bolívar, Sucre, La Ceiba, Miranda, Andrés Bello y Monte Carmelo."
+          }
+        ]
+      },
+      {
+        "municipios": [],
+        "tribunales": [
+          {
+            "nombre": "Tribunal Primero de Municipio Ordinario y Ejecutor de Medidas de los Municipios Boconó y Juan Vicente Campo Elías."
+          },
+          {
+            "nombre": "Tribunal Segundo de Municipio Ordinario y Ejecutor de Medidas de los Municipios Boconó y Juan Vicente Campo Elías."
+          }
+        ]
+      },
+      {
+        "municipios": [
+          "Juan Vicente Campos Elías"
+        ],
+        "tribunales": [
+          {
+            "nombre": "Juzgado de los Municipios Boconó y Juan Vicente Campo Elias."
+          },
+          {
+            "nombre": "Juzgado Ejecutor de Medidas de los Municipios Boconó y Juan Vicente Campo Elias."
+          }
+        ]
+      },
+      {
+        "municipios": [
+          "La Ceiba",
+          "Miranda",
+          "Sucre"
+        ],
+        "tribunales": [
+          {
+            "nombre": "Juzgado Ejecutor de Medidas de los Municipios Sucre, Miranda y La Ceiba."
+          }
+        ]
+      },
+      {
+        "municipios": [
+          "Escuque",
+          "Urdaneta",
+          "Valera"
+        ],
+        "tribunales": [
+          {
+            "nombre": "Juzgado Ejecutor de Medidas de los Municipios Valera, Urdaneta y Escuque."
+          }
+        ]
+      }
+    ]
+  }
+]

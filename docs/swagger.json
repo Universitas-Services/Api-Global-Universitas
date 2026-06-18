@@ -216,6 +216,62 @@
                 }
             }
         },
+        "/api/v1/territorio/estados/{estado_id}/tribunales": {
+            "get": {
+                "description": "Retorna la lista de tribunales de categoría Superior y Primera Instancia pertenecientes a un estado",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Territorio"
+                ],
+                "summary": "Obtener tribunales estadales por estado",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "ID del Estado",
+                        "name": "estado_id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/dto.GenericResponse"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/definitions/dto.TribunalResponse"
+                                            }
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/dto.GenericResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/dto.GenericResponse"
+                        }
+                    }
+                }
+            }
+        },
         "/api/v1/territorio/municipios/{municipio_id}/parroquias": {
             "get": {
                 "description": "Retorna la lista de parroquias pertenecientes a un municipio específico",
@@ -250,6 +306,62 @@
                                             "type": "array",
                                             "items": {
                                                 "$ref": "#/definitions/dto.ParroquiaResponse"
+                                            }
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/dto.GenericResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/dto.GenericResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/territorio/municipios/{municipio_id}/tribunales": {
+            "get": {
+                "description": "Retorna la lista de tribunales de categoría Municipio asociados a un municipio específico, incluyendo los compartidos con otros municipios",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Territorio"
+                ],
+                "summary": "Obtener tribunales municipales por municipio",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "ID del Municipio",
+                        "name": "municipio_id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/dto.GenericResponse"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/definitions/dto.TribunalResponse"
                                             }
                                         }
                                     }
@@ -358,6 +470,23 @@
                 "nombre": {
                     "type": "string",
                     "example": "Catedral"
+                }
+            }
+        },
+        "dto.TribunalResponse": {
+            "type": "object",
+            "properties": {
+                "categoria": {
+                    "type": "string",
+                    "example": "Superior"
+                },
+                "id": {
+                    "type": "integer",
+                    "example": 1
+                },
+                "nombre": {
+                    "type": "string",
+                    "example": "Corte de Apelaciones Sala 1"
                 }
             }
         },
