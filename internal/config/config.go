@@ -18,7 +18,6 @@ type Config struct {
 
 // LoadConfig lee las variables de entorno o carga el archivo .env si existe
 func LoadConfig() *Config {
-	// Intentamos cargar .env, pero no fallamos si no existe (ya que en Docker prod a veces no se usa .env file)
 	_ = godotenv.Load()
 
 	return &Config{
@@ -30,6 +29,17 @@ func LoadConfig() *Config {
 		DBPort:     getEnv("DB_PORT", "5432"),
 		DBSSLMode:  getEnv("DB_SSLMODE", "disable"),
 	}
+}
+
+// GetDSN retorna el string de conexión a la base de datos
+func (c *Config) GetDSN() string {
+	// Si existe DATABASE_URL (usado típicamente en Render/Supabase), la preferimos
+	if dbURL := os.Getenv("DATABASE_URL"); dbURL != "" {
+		return dbURL
+	}
+	
+	// Si no, armamos el DSN con las variables individuales
+	return "host=" + c.DBHost + " user=" + c.DBUser + " password=" + c.DBPassword + " dbname=" + c.DBName + " port=" + c.DBPort + " sslmode=" + c.DBSSLMode
 }
 
 // Helper para obtener variable o un valor por defecto

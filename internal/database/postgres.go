@@ -13,8 +13,7 @@ import (
 
 // InitDB inicializa la conexión a PostgreSQL con sistema de reintentos
 func InitDB(cfg *config.Config) (*gorm.DB, error) {
-	dsn := fmt.Sprintf("host=%s user=%s password=%s dbname=%s port=%s sslmode=%s",
-		cfg.DBHost, cfg.DBUser, cfg.DBPassword, cfg.DBName, cfg.DBPort, cfg.DBSSLMode)
+	dsn := cfg.GetDSN()
 
 	var db *gorm.DB
 	var err error
