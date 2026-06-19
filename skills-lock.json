@@ -1,0 +1,35 @@
+{
+  "version": 1,
+  "skills": {
+    "find-skills": {
+      "source": "agentspace-so/skills",
+      "sourceType": "github",
+      "skillPath": "find-skills/SKILL.md",
+      "computedHash": "aa453a58777bdfb5342caf25194018f646eae1dc548a6ea3313fe94950156e3e"
+    },
+    "gcp-cloud-architect": {
+      "source": "alirezarezvani/claude-skills",
+      "sourceType": "github",
+      "skillPath": "engineering-team/skills/gcp-cloud-architect/SKILL.md",
+      "computedHash": "0c7d91aac5711289569b469fd211bbdef2e4ad191d8a5145b117934ce86b48c4"
+    },
+    "gcp-cloud-run": {
+      "source": "sickn33/antigravity-awesome-skills",
+      "sourceType": "github",
+      "skillPath": "skills/gcp-cloud-run/SKILL.md",
+      "computedHash": "6f11110d1d121ab29bfc6817b9a3da8e17024b587f8e8d28853c404c2ba79b73"
+    },
+    "gcp-development": {
+      "source": "mindrally/skills",
+      "sourceType": "github",
+      "skillPath": "gcp-development/SKILL.md",
+      "computedHash": "b6cf28e3482887756f61caddf5f35535bc7098f58aeb36fb0785740560890980"
+    },
+    "gcp-iam": {
+      "source": "alphaonedev/openclaw-graph",
+      "sourceType": "github",
+      "skillPath": "skills/cloud-gcp/gcp-iam/SKILL.md",
+      "computedHash": "3703efb7f10230eebfe559fa9f4a2445567b1d060e0293b19b8c20110fb50a4f"
+    }
+  }
+}

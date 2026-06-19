@@ -20,7 +20,10 @@ func InitDB(cfg *config.Config) (*gorm.DB, error) {
 
 	// Sistema de reintentos: Intentará conectar 5 veces, esperando 2 segundos entre intentos.
 	for i := 1; i <= 5; i++ {
-		db, err = gorm.Open(postgres.Open(dsn), &gorm.Config{})
+		db, err = gorm.Open(postgres.New(postgres.Config{
+			DSN:                  dsn,
+			PreferSimpleProtocol: true, // Disable implicit prepared statement usage for PgBouncer
+		}), &gorm.Config{})
 		if err == nil {
 			log.Println("✅ Conexión a PostgreSQL establecida exitosamente")
 			return db, nil // Conexión exitosa, salimos del bucle

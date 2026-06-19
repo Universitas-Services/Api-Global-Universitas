@@ -22,7 +22,6 @@ import (
 // @version         1.0
 // @description     API centralizada para indicadores económicos y territoriales.
 // @contact.name    Jose
-// @host            localhost:8080
 // @BasePath        /
 func main() {
 	cfg := config.LoadConfig()
