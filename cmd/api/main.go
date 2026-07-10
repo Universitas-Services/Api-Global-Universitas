@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"os"
+	"strings"
 
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
@@ -32,10 +34,11 @@ func main() {
 	}
 
 	// 1. Ejecutar Migraciones
-	db.AutoMigrate(&models.Estado{}, &models.Municipio{}, &models.Parroquia{}, &models.IndicadorEconomico{}, &models.Tribunal{})
+	db.AutoMigrate(&models.Estado{}, &models.Ciudad{}, &models.Municipio{}, &models.Parroquia{}, &models.IndicadorEconomico{}, &models.Tribunal{})
 
 	// 2. Ejecutar Seeders (Poblar BD)
 	database.SeedTerritories(db)
+	database.SeedCiudades(db)
 	database.SeedTribunales(db)
 
 	// Inicializar Router
@@ -46,9 +49,17 @@ func main() {
 	// ==========================================
 	// CONFIGURACIÓN DE CORS
 	// ==========================================
+	corsOrigins := os.Getenv("CORS_ALLOWED_ORIGINS")
+	var allowedOrigins []string
+	if corsOrigins != "" {
+		allowedOrigins = strings.Split(corsOrigins, ",")
+	} else {
+		allowedOrigins = []string{"http://localhost:3000", "http://localhost:3001"}
+	}
+
 	r.Use(cors.Handler(cors.Options{
 		// Aquí defines los orígenes permitidos. Luego podrás añadir los dominios de producción.
-		AllowedOrigins: []string{"http://localhost:3000", "http://localhost:3001"},
+		AllowedOrigins: allowedOrigins,
 		// Métodos permitidos (GET, POST, etc.)
 		AllowedMethods: []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"},
 		// Cabeceras que el frontend tiene permitido enviar
@@ -75,6 +86,7 @@ func main() {
 
 		r.Route("/territorio", func(r chi.Router) {
 			r.Get("/estados", terrHandler.GetEstados)
+			r.Get("/estados/{estado_id}/ciudades", terrHandler.GetCiudades)
 			r.Get("/estados/{estado_id}/municipios", terrHandler.GetMunicipios)
 			r.Get("/estados/{estado_id}/tribunales", terrHandler.GetTribunalesEstadales)
 			r.Get("/municipios/{municipio_id}/parroquias", terrHandler.GetParroquias)

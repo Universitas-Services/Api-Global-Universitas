@@ -1,0 +1,98 @@
+[
+  {
+    "estado": "Amazonas",
+    "ciudades": ["Puerto Ayacucho", "San Fernando de Atabapo", "San Carlos de Río Negro", "Maroa"]
+  },
+  {
+    "estado": "Anzoátegui",
+    "ciudades": ["Barcelona", "Puerto La Cruz", "Lechería", "El Tigre", "Anaco", "Cantaura", "El Tigrito", "Clarines", "Píritu", "Valle de Guanape"]
+  },
+  {
+    "estado": "Apure",
+    "ciudades": ["San Fernando de Apure", "Guasdualito", "Elorza", "Achaguas", "San Juan de Payara"]
+  },
+  {
+    "estado": "Aragua",
+    "ciudades": ["Maracay", "Turmero", "Cagua", "La Victoria", "El Limón", "Villa de Cura", "Palo Negro", "Santa Cruz de Aragua"]
+  },
+  {
+    "estado": "Barinas",
+    "ciudades": ["Barinas", "Socopó", "Barinitas", "Sabaneta", "Ciudad Bolivia"]
+  },
+  {
+    "estado": "Bolívar",
+    "ciudades": ["Ciudad Guayana", "Ciudad Bolívar", "Upata", "Caicara del Orinoco", "Tumeremo", "Guasipati", "El Callao", "Santa Elena de Uairén"]
+  },
+  {
+    "estado": "Carabobo",
+    "ciudades": ["Valencia", "Puerto Cabello", "Guacara", "Mariara", "San Joaquín", "Morón", "Bejuma", "Güigüe", "San Diego", "Tocuyito", "Los Guayos"]
+  },
+  {
+    "estado": "Cojedes",
+    "ciudades": ["San Carlos", "Tinaquillo", "Tinaco", "El Pao", "El Baúl"]
+  },
+  {
+    "estado": "Delta Amacuro",
+    "ciudades": ["Tucupita", "Pedernales", "Curiapo", "Sierra Imataca"]
+  },
+  {
+    "estado": "Falcón",
+    "ciudades": ["Coro", "Punto Fijo", "Dabajuro", "Tucacas", "Chichiriviche", "Pueblo Nuevo", "Santa Ana de Coro"]
+  },
+  {
+    "estado": "Guárico",
+    "ciudades": ["San Juan de los Morros", "Calabozo", "Valle de la Pascua", "Zaraza", "Altagracia de Orituco", "Tucupido"]
+  },
+  {
+    "estado": "Lara",
+    "ciudades": ["Barquisimeto", "Carora", "Cabudare", "El Tocuyo", "Quíbor", "Duaca", "Sanare"]
+  },
+  {
+    "estado": "Mérida",
+    "ciudades": ["Mérida", "El Vigía", "Tovar", "Ejido", "Lagunillas", "Bailadores", "Nueva Bolivia"]
+  },
+  {
+    "estado": "Miranda",
+    "ciudades": ["Los Teques", "Guarenas", "Guatire", "Charallave", "Cúa", "Ocumare del Tuy", "Santa Teresa del Tuy", "San Antonio de los Altos", "Caucagua", "Higuerote", "Petare", "Baruta", "Chacao"]
+  },
+  {
+    "estado": "Monagas",
+    "ciudades": ["Maturín", "Punta de Mata", "Caripito", "Caicara de Maturín", "Temblador"]
+  },
+  {
+    "estado": "Nueva Esparta",
+    "ciudades": ["La Asunción", "Porlamar", "Pampatar", "Juan Griego", "San Juan Bautista", "El Valle del Espíritu Santo", "Punta de Piedras"]
+  },
+  {
+    "estado": "Portuguesa",
+    "ciudades": ["Guanare", "Acarigua", "Araure", "Villa Bruzual", "Turén", "Boconoíto", "Píritu"]
+  },
+  {
+    "estado": "Sucre",
+    "ciudades": ["Cumaná", "Carúpano", "Güiria", "Cariaco", "Casanay", "Marigüitar", "Río Caribe"]
+  },
+  {
+    "estado": "Táchira",
+    "ciudades": ["San Cristóbal", "Táriba", "Rubio", "San Antonio del Táchira", "Ureña", "La Grita", "El Cobre", "Capacho", "Colón"]
+  },
+  {
+    "estado": "Trujillo",
+    "ciudades": ["Valera", "Trujillo", "Boconó", "Sabana de Mendoza", "Carache", "Pampán", "Pampanito", "La Quebrada"]
+  },
+  {
+    "estado": "Vargas",
+    "ciudades": ["La Guaira", "Maiquetía", "Catia La Mar", "Macuto", "Caraballeda", "Naiguatá"]
+  },
+  {
+    "estado": "Yaracuy",
+    "ciudades": ["San Felipe", "Chivacoa", "Yaritagua", "Nirgua", "Aroa", "Urachiche"]
+  },
+  {
+    "estado": "Zulia",
+    "ciudades": ["Maracaibo", "San Francisco", "Cabimas", "Ciudad Ojeda", "Machiques", "La Villa del Rosario", "Santa Rita", "Bachaquero", "Los Puertos de Altagracia", "Caja Seca"]
+  },
+  {
+    "estado": "Distrito Capital",
+    "ciudades": ["Caracas"]
+  }
+]

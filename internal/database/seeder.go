@@ -158,3 +158,57 @@ func SeedTribunales(db *gorm.DB) {
 
 	log.Println("✅ Seeder completado: Tribunales cargados exitosamente en la base de datos.")
 }
+
+// ==========================================
+// SEEDER DE CIUDADES
+// ==========================================
+
+type ciudadSeedEstado struct {
+	Estado   string   `json:"estado"`
+	Ciudades []string `json:"ciudades"`
+}
+
+// SeedCiudades lee el JSON de ciudades e inserta los datos
+func SeedCiudades(db *gorm.DB) {
+	var count int64
+	db.Model(&models.Ciudad{}).Count(&count)
+
+	if count > 0 {
+		log.Println("⚡ Base de datos ya poblada. Omitiendo Seeder de ciudades.")
+		return
+	}
+
+	log.Println("🌱 Iniciando Seeder: Cargando ciudades de Venezuela...")
+
+	bytes, err := os.ReadFile("internal/database/seeds/ciudades.json")
+	if err != nil {
+		log.Printf("❌ Error leyendo archivo ciudades.json: %v\n", err)
+		return
+	}
+
+	var seedData []ciudadSeedEstado
+	if err := json.Unmarshal(bytes, &seedData); err != nil {
+		log.Printf("❌ Error decodificando ciudades JSON: %v\n", err)
+		return
+	}
+
+	for _, estadoData := range seedData {
+		var estado models.Estado
+		if err := db.Where("nombre = ?", estadoData.Estado).First(&estado).Error; err != nil {
+			log.Printf("⚠️ Estado '%s' no encontrado para insertar ciudades, omitiendo...\n", estadoData.Estado)
+			continue
+		}
+
+		for _, cityName := range estadoData.Ciudades {
+			ciudad := models.Ciudad{
+				Nombre:   cityName,
+				EstadoID: estado.ID,
+			}
+			if err := db.Create(&ciudad).Error; err != nil {
+				log.Printf("⚠️ Error creando ciudad '%s': %v\n", cityName, err)
+			}
+		}
+	}
+
+	log.Println("✅ Seeder completado: Ciudades cargadas exitosamente en la base de datos.")
+}

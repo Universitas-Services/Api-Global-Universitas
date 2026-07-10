@@ -22,3 +22,9 @@ type TribunalResponse struct {
 	Nombre    string `json:"nombre" example:"Corte de Apelaciones Sala 1"`
 	Categoria string `json:"categoria" example:"Superior"`
 }
+
+type CiudadResponse struct {
+	ID       uint   `json:"id" example:"1"`
+	EstadoID uint   `json:"estado_id" example:"1"`
+	Nombre   string `json:"nombre" example:"Barquisimeto"`
+}

@@ -6,6 +6,8 @@ type Estado struct {
 	Nombre string `gorm:"type:varchar(100);not null;unique" json:"nombre"`
 	// Relación: Un Estado "tiene muchos" (Has Many) Municipios
 	Municipios []Municipio `gorm:"foreignKey:EstadoID" json:"municipios,omitempty"`
+	// Relación: Un Estado "tiene muchas" Ciudades
+	Ciudades []Ciudad `gorm:"foreignKey:EstadoID" json:"ciudades,omitempty"`
 }
 
 // Municipio pertenece a un Estado y tiene muchas Parroquias
@@ -33,4 +35,11 @@ type Tribunal struct {
 	Categoria  string      `gorm:"type:varchar(50);not null" json:"categoria"` // "Superior", "Primera Instancia", "Municipio"
 	EstadoID   *uint       `gorm:"index" json:"estado_id,omitempty"`
 	Municipios []Municipio `gorm:"many2many:tribunal_municipios;" json:"municipios,omitempty"`
+}
+
+// Ciudad pertenece a un Estado
+type Ciudad struct {
+	ID       uint   `gorm:"primaryKey;autoIncrement" json:"id"`
+	EstadoID uint   `gorm:"not null" json:"estado_id"`
+	Nombre   string `gorm:"type:varchar(100);not null" json:"nombre"`
 }

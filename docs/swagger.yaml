@@ -12,6 +12,18 @@ definitions:
         example: 36.4521
         type: number
     type: object
+  dto.CiudadResponse:
+    properties:
+      estado_id:
+        example: 1
+        type: integer
+      id:
+        example: 1
+        type: integer
+      nombre:
+        example: Barquisimeto
+        type: string
+    type: object
   dto.CreateUCAUURequest:
     properties:
       valor:
@@ -83,7 +95,6 @@ definitions:
         example: 35.5
         type: number
     type: object
-
 info:
   contact:
     name: Jose
@@ -182,6 +193,40 @@ paths:
           schema:
             $ref: '#/definitions/dto.GenericResponse'
       summary: Obtener todos los estados
+      tags:
+      - Territorio
+  /api/v1/territorio/estados/{estado_id}/ciudades:
+    get:
+      description: Retorna la lista de ciudades pertenecientes a un estado específico
+      parameters:
+      - description: ID del Estado
+        in: path
+        name: estado_id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/dto.GenericResponse'
+            - properties:
+                data:
+                  items:
+                    $ref: '#/definitions/dto.CiudadResponse'
+                  type: array
+              type: object
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/dto.GenericResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/dto.GenericResponse'
+      summary: Obtener ciudades por estado
       tags:
       - Territorio
   /api/v1/territorio/estados/{estado_id}/municipios:

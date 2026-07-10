@@ -37,3 +37,9 @@ func GetTribunalesByMunicipio(db *gorm.DB, municipioID int) ([]models.Tribunal, 
 		Order("tribunals.nombre asc").Find(&tribunales).Error
 	return tribunales, err
 }
+
+func GetCiudadesByEstado(db *gorm.DB, estadoID int) ([]models.Ciudad, error) {
+	var ciudades []models.Ciudad
+	err := db.Where("estado_id = ?", estadoID).Order("nombre asc").Find(&ciudades).Error
+	return ciudades, err
+}

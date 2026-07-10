@@ -8,7 +8,6 @@
         },
         "version": "1.0"
     },
-
     "basePath": "/",
     "paths": {
         "/api/v1/economia/bcv": {
@@ -149,6 +148,62 @@
                                     }
                                 }
                             ]
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/dto.GenericResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/territorio/estados/{estado_id}/ciudades": {
+            "get": {
+                "description": "Retorna la lista de ciudades pertenecientes a un estado específico",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Territorio"
+                ],
+                "summary": "Obtener ciudades por estado",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "ID del Estado",
+                        "name": "estado_id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/dto.GenericResponse"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/definitions/dto.CiudadResponse"
+                                            }
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/dto.GenericResponse"
                         }
                     },
                     "500": {
@@ -400,6 +455,23 @@
                 "usd": {
                     "type": "number",
                     "example": 36.4521
+                }
+            }
+        },
+        "dto.CiudadResponse": {
+            "type": "object",
+            "properties": {
+                "estado_id": {
+                    "type": "integer",
+                    "example": 1
+                },
+                "id": {
+                    "type": "integer",
+                    "example": 1
+                },
+                "nombre": {
+                    "type": "string",
+                    "example": "Barquisimeto"
                 }
             }
         },
