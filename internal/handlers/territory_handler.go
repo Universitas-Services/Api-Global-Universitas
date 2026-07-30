@@ -243,3 +243,33 @@ func (h *TerritoryHandler) GetTribunalesMunicipales(w http.ResponseWriter, r *ht
 		Data:    response,
 	})
 }
+
+// GetCodigosArea godoc
+// @Summary      Obtener códigos de área
+// @Description  Retorna la lista de códigos de área telefónicos de Venezuela
+// @Tags         Territorio
+// @Produce      json
+// @Success      200  {object}  dto.GenericResponse{data=[]dto.CodigoAreaResponse}
+// @Failure      500  {object}  dto.GenericResponse
+// @Router       /api/v1/territorio/codigos-area [get]
+func (h *TerritoryHandler) GetCodigosArea(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
+
+	codigos, err := repositories.GetCodigosArea(h.DB)
+	if err != nil {
+		w.WriteHeader(http.StatusInternalServerError)
+		json.NewEncoder(w).Encode(dto.GenericResponse{Message: "Error obteniendo códigos de área"})
+		return
+	}
+
+	var response []dto.CodigoAreaResponse
+	for _, c := range codigos {
+		response = append(response, dto.CodigoAreaResponse{ID: c.ID, Codigo: c.Codigo})
+	}
+
+	w.WriteHeader(http.StatusOK)
+	json.NewEncoder(w).Encode(dto.GenericResponse{
+		Message: "Códigos de área obtenidos con éxito",
+		Data:    response,
+	})
+}

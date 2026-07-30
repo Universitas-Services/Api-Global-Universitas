@@ -15,6 +15,7 @@ import (
 	"api-global/internal/config"
 	"api-global/internal/database"
 	"api-global/internal/handlers"
+	"api-global/internal/jobs"
 	"api-global/internal/models"
 
 	_ "api-global/docs"
@@ -34,12 +35,17 @@ func main() {
 	}
 
 	// 1. Ejecutar Migraciones
-	db.AutoMigrate(&models.Estado{}, &models.Ciudad{}, &models.Municipio{}, &models.Parroquia{}, &models.IndicadorEconomico{}, &models.Tribunal{})
+	db.AutoMigrate(&models.Estado{}, &models.Ciudad{}, &models.Municipio{}, &models.Parroquia{}, &models.IndicadorEconomico{}, &models.Tribunal{}, &models.CodigoArea{})
 
 	// 2. Ejecutar Seeders (Poblar BD)
 	database.SeedTerritories(db)
 	database.SeedCiudades(db)
 	database.SeedTribunales(db)
+	database.SeedBCVHistorico(db)
+	database.SeedCodigosArea(db)
+
+	// 3. Job BCV: scrape 2x/día (hora Caracas) con upsert
+	jobs.StartBCVDailyJob(db, cfg.BCVDailyHours)
 
 	// Inicializar Router
 	r := chi.NewRouter()
@@ -82,6 +88,7 @@ func main() {
 			r.Get("/ucauu", ecoHandler.GetUCAUU)
 			r.Post("/ucauu", ecoHandler.CreateUCAUU)
 			r.Get("/bcv", ecoHandler.GetBCV)
+			r.Get("/bcv/historico", ecoHandler.GetBCVHistorico)
 		})
 
 		r.Route("/territorio", func(r chi.Router) {
@@ -91,6 +98,7 @@ func main() {
 			r.Get("/estados/{estado_id}/tribunales", terrHandler.GetTribunalesEstadales)
 			r.Get("/municipios/{municipio_id}/parroquias", terrHandler.GetParroquias)
 			r.Get("/municipios/{municipio_id}/tribunales", terrHandler.GetTribunalesMunicipales)
+			r.Get("/codigos-area", terrHandler.GetCodigosArea)
 		})
 	})
 

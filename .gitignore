@@ -40,3 +40,8 @@ vendor/
 .vscode/
 .idea/
 *.swp
+
+# ==========================================
+# 6. Fuentes Excel de trabajo (se versiona el CSV generado)
+# ==========================================
+historico_divisas.xlsx

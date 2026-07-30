@@ -21,6 +21,8 @@ RUN go build -o main ./cmd/api
 # Usamos una imagen vacía de Alpine Linux para producción
 FROM alpine:latest
 
+RUN apk add --no-cache ca-certificates tzdata
+
 WORKDIR /root/
 
 # Copiamos solo el binario compilado desde la etapa anterior

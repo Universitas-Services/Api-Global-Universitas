@@ -28,3 +28,8 @@ type CiudadResponse struct {
 	EstadoID uint   `json:"estado_id" example:"1"`
 	Nombre   string `json:"nombre" example:"Barquisimeto"`
 }
+
+type CodigoAreaResponse struct {
+	ID     uint   `json:"id" example:"1"`
+	Codigo string `json:"codigo" example:"0412"`
+}

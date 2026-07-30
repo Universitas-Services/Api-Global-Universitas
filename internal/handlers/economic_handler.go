@@ -4,6 +4,7 @@ import (
 	"api-global/internal/dto"
 	"api-global/internal/repositories"
 	"api-global/internal/scrapers"
+	"api-global/internal/timeutil"
 	"encoding/json"
 	"net/http"
 	"time"
@@ -124,7 +125,7 @@ func (h *EconomicHandler) GetBCV(w http.ResponseWriter, r *http.Request) {
 			Data: dto.BCVResponse{
 				USD:   rates.USD,
 				EUR:   rates.EUR,
-				Fecha: time.Now().Truncate(24 * time.Hour),
+				Fecha: timeutil.HoyCaracas(),
 			},
 		})
 		return
@@ -137,6 +138,51 @@ func (h *EconomicHandler) GetBCV(w http.ResponseWriter, r *http.Request) {
 			USD:   usdHoy.Valor,
 			EUR:   eurHoy.Valor,
 			Fecha: usdHoy.Fecha,
+		},
+	})
+}
+
+// GetBCVHistorico godoc
+// @Summary      Obtener tasa BCV por fecha
+// @Description  Retorna USD y EUR del BCV para una fecha específica desde la base de datos (sin scrapeo). Pensado para el calendario del frontend.
+// @Tags         Economia
+// @Produce      json
+// @Param        fecha query string true "Fecha a consultar (YYYY-MM-DD)" example:"2024-05-15"
+// @Success      200  {object}  dto.GenericResponse{data=dto.BCVHistoricoResponse}
+// @Failure      400  {object}  dto.GenericResponse
+// @Failure      404  {object}  dto.GenericResponse
+// @Router       /api/v1/economia/bcv/historico [get]
+func (h *EconomicHandler) GetBCVHistorico(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
+
+	fechaStr := r.URL.Query().Get("fecha")
+	if fechaStr == "" {
+		w.WriteHeader(http.StatusBadRequest)
+		json.NewEncoder(w).Encode(dto.GenericResponse{Message: "El parámetro fecha es obligatorio (YYYY-MM-DD)"})
+		return
+	}
+
+	fecha, err := time.Parse("2006-01-02", fechaStr)
+	if err != nil {
+		w.WriteHeader(http.StatusBadRequest)
+		json.NewEncoder(w).Encode(dto.GenericResponse{Message: "Formato de fecha inválido. Use YYYY-MM-DD"})
+		return
+	}
+
+	usd, eur, err := repositories.GetBCVByFecha(h.DB, fecha)
+	if err != nil {
+		w.WriteHeader(http.StatusNotFound)
+		json.NewEncoder(w).Encode(dto.GenericResponse{Message: "No hay tasas BCV registradas para la fecha " + fechaStr})
+		return
+	}
+
+	w.WriteHeader(http.StatusOK)
+	json.NewEncoder(w).Encode(dto.GenericResponse{
+		Message: "Tasa BCV obtenida con éxito",
+		Data: dto.BCVHistoricoResponse{
+			Fecha: fechaStr,
+			USD:   usd,
+			EUR:   eur,
 		},
 	})
 }

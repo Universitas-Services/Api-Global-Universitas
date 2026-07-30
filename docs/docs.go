@@ -55,6 +55,60 @@ const docTemplate = `{
                 }
             }
         },
+        "/api/v1/economia/bcv/historico": {
+            "get": {
+                "description": "Retorna USD y EUR del BCV para una fecha específica desde la base de datos (sin scrapeo). Pensado para el calendario del frontend.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Economia"
+                ],
+                "summary": "Obtener tasa BCV por fecha",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "example": "2024-05-15",
+                        "description": "Fecha a consultar (YYYY-MM-DD)",
+                        "name": "fecha",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/dto.GenericResponse"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/definitions/dto.BCVHistoricoResponse"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/dto.GenericResponse"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/dto.GenericResponse"
+                        }
+                    }
+                }
+            }
+        },
         "/api/v1/economia/ucauu": {
             "get": {
                 "description": "Retorna el último valor registrado de la unidad UCAUU",
@@ -114,6 +168,47 @@ const docTemplate = `{
                         "description": "Bad Request",
                         "schema": {
                             "$ref": "#/definitions/dto.GenericResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/dto.GenericResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/territorio/codigos-area": {
+            "get": {
+                "description": "Retorna la lista de códigos de área telefónicos de Venezuela",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Territorio"
+                ],
+                "summary": "Obtener códigos de área",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/dto.GenericResponse"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/definitions/dto.CodigoAreaResponse"
+                                            }
+                                        }
+                                    }
+                                }
+                            ]
                         }
                     },
                     "500": {
@@ -462,6 +557,36 @@ const docTemplate = `{
                 "usd": {
                     "type": "number",
                     "example": 36.4521
+                }
+            }
+        },
+        "dto.BCVHistoricoResponse": {
+            "type": "object",
+            "properties": {
+                "eur": {
+                    "type": "number",
+                    "example": 39.1234
+                },
+                "fecha": {
+                    "type": "string",
+                    "example": "2024-05-15"
+                },
+                "usd": {
+                    "type": "number",
+                    "example": 36.4521
+                }
+            }
+        },
+        "dto.CodigoAreaResponse": {
+            "type": "object",
+            "properties": {
+                "codigo": {
+                    "type": "string",
+                    "example": "0412"
+                },
+                "id": {
+                    "type": "integer",
+                    "example": 1
                 }
             }
         },

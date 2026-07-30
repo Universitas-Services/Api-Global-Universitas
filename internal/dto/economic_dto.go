@@ -34,3 +34,10 @@ type BCVResponse struct {
 	EUR   float64   `json:"eur" example:"39.1234"`
 	Fecha time.Time `json:"fecha" example:"2026-03-20T00:00:00Z"`
 }
+
+// BCVHistoricoResponse es la tasa BCV de una fecha concreta (calendario)
+type BCVHistoricoResponse struct {
+	Fecha string  `json:"fecha" example:"2024-05-15"`
+	USD   float64 `json:"usd" example:"36.4521"`
+	EUR   float64 `json:"eur" example:"39.1234"`
+}

@@ -43,3 +43,9 @@ func GetCiudadesByEstado(db *gorm.DB, estadoID int) ([]models.Ciudad, error) {
 	err := db.Where("estado_id = ?", estadoID).Order("nombre asc").Find(&ciudades).Error
 	return ciudades, err
 }
+
+func GetCodigosArea(db *gorm.DB) ([]models.CodigoArea, error) {
+	var codigos []models.CodigoArea
+	err := db.Order("codigo asc").Find(&codigos).Error
+	return codigos, err
+}

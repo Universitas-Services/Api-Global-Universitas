@@ -1,14 +1,19 @@
 package database
 
 import (
+	"encoding/csv"
 	"encoding/json"
 	"log"
 	"os"
 	"path/filepath"
+	"strconv"
+	"strings"
+	"time"
 
 	"api-global/internal/models"
 
 	"gorm.io/gorm"
+	"gorm.io/gorm/clause"
 )
 
 // SeedTerritories lee el JSON e inserta los datos si la tabla está vacía
@@ -212,3 +217,133 @@ func SeedCiudades(db *gorm.DB) {
 
 	log.Println("✅ Seeder completado: Ciudades cargadas exitosamente en la base de datos.")
 }
+
+// ==========================================
+// SEEDER DE HISTÓRICO BCV
+// ==========================================
+
+// SeedBCVHistorico carga tasas USD/EUR históricas desde CSV a indicadores_economicos
+func SeedBCVHistorico(db *gorm.DB) {
+	var count int64
+	db.Model(&models.IndicadorEconomico{}).Where("tipo = ?", "USD_BCV").Count(&count)
+
+	// Si ya hay un histórico cargado (no solo 1-2 días de scrape), omitir
+	if count >= 1000 {
+		log.Println("⚡ Histórico BCV ya poblado. Omitiendo Seeder de BCV.")
+		return
+	}
+
+	log.Println("🌱 Iniciando Seeder: Cargando histórico BCV...")
+
+	file, err := os.Open("internal/database/seeds/bcv_historico.csv")
+	if err != nil {
+		log.Printf("❌ Error leyendo bcv_historico.csv: %v\n", err)
+		return
+	}
+	defer file.Close()
+
+	reader := csv.NewReader(file)
+	records, err := reader.ReadAll()
+	if err != nil {
+		log.Printf("❌ Error parseando bcv_historico.csv: %v\n", err)
+		return
+	}
+
+	if len(records) < 2 {
+		log.Println("⚠️ bcv_historico.csv no tiene datos")
+		return
+	}
+
+	var batch []models.IndicadorEconomico
+	for i, row := range records {
+		if i == 0 {
+			continue // header
+		}
+		if len(row) < 3 {
+			continue
+		}
+
+		fecha, err := time.Parse("2006-01-02", strings.TrimSpace(row[0]))
+		if err != nil {
+			log.Printf("⚠️ Fecha inválida en fila %d: %v\n", i+1, err)
+			continue
+		}
+
+		if usdStr := strings.TrimSpace(row[1]); usdStr != "" {
+			usd, err := strconv.ParseFloat(usdStr, 64)
+			if err == nil {
+				batch = append(batch, models.IndicadorEconomico{
+					Tipo:  "USD_BCV",
+					Valor: usd,
+					Fecha: fecha,
+				})
+			}
+		}
+
+		if eurStr := strings.TrimSpace(row[2]); eurStr != "" {
+			eur, err := strconv.ParseFloat(eurStr, 64)
+			if err == nil {
+				batch = append(batch, models.IndicadorEconomico{
+					Tipo:  "EUR_BCV",
+					Valor: eur,
+					Fecha: fecha,
+				})
+			}
+		}
+	}
+
+	if len(batch) == 0 {
+		log.Println("⚠️ No se generaron registros BCV para insertar")
+		return
+	}
+
+	// DoNothing evita fallar si ya existe la tasa de hoy por un scrape previo
+	if err := db.Clauses(clause.OnConflict{DoNothing: true}).CreateInBatches(batch, 500).Error; err != nil {
+		log.Printf("❌ Error insertando histórico BCV: %v\n", err)
+		return
+	}
+
+	log.Printf("✅ Seeder completado: %d registros BCV procesados hacia indicadores_economicos.\n", len(batch))
+}
+
+// ==========================================
+// SEEDER DE CÓDIGOS DE ÁREA
+// ==========================================
+
+// SeedCodigosArea carga los códigos de área telefónicos desde JSON
+func SeedCodigosArea(db *gorm.DB) {
+	var count int64
+	db.Model(&models.CodigoArea{}).Count(&count)
+
+	if count > 0 {
+		log.Println("⚡ Códigos de área ya poblados. Omitiendo Seeder.")
+		return
+	}
+
+	log.Println("🌱 Iniciando Seeder: Cargando códigos de área...")
+
+	bytes, err := os.ReadFile("internal/database/seeds/codigos_area.json")
+	if err != nil {
+		log.Printf("❌ Error leyendo codigos_area.json: %v\n", err)
+		return
+	}
+
+	var codigos []string
+	if err := json.Unmarshal(bytes, &codigos); err != nil {
+		log.Printf("❌ Error decodificando codigos_area.json: %v\n", err)
+		return
+	}
+
+	var batch []models.CodigoArea
+	for _, codigo := range codigos {
+		batch = append(batch, models.CodigoArea{Codigo: codigo})
+	}
+
+	if err := db.CreateInBatches(batch, 100).Error; err != nil {
+		log.Printf("❌ Error insertando códigos de área: %v\n", err)
+		return
+	}
+
+	log.Printf("✅ Seeder completado: %d códigos de área cargados.\n", len(batch))
+}
+

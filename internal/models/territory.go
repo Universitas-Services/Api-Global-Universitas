@@ -43,3 +43,9 @@ type Ciudad struct {
 	EstadoID uint   `gorm:"not null" json:"estado_id"`
 	Nombre   string `gorm:"type:varchar(100);not null" json:"nombre"`
 }
+
+// CodigoArea representa un código de área telefónico de Venezuela
+type CodigoArea struct {
+	ID     uint   `gorm:"primaryKey;autoIncrement" json:"id"`
+	Codigo string `gorm:"type:varchar(10);not null;unique" json:"codigo"`
+}

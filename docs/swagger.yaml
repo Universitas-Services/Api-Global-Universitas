@@ -1,5 +1,17 @@
 basePath: /
 definitions:
+  dto.BCVHistoricoResponse:
+    properties:
+      eur:
+        example: 39.1234
+        type: number
+      fecha:
+        example: "2024-05-15"
+        type: string
+      usd:
+        example: 36.4521
+        type: number
+    type: object
   dto.BCVResponse:
     properties:
       eur:
@@ -11,6 +23,15 @@ definitions:
       usd:
         example: 36.4521
         type: number
+    type: object
+  dto.CodigoAreaResponse:
+    properties:
+      codigo:
+        example: "0412"
+        type: string
+      id:
+        example: 1
+        type: integer
     type: object
   dto.CiudadResponse:
     properties:
@@ -124,6 +145,40 @@ paths:
       summary: Obtener tasas del BCV (Dólar y Euro)
       tags:
       - Economia
+  /api/v1/economia/bcv/historico:
+    get:
+      description: Retorna USD y EUR del BCV para una fecha específica desde la base
+        de datos (sin scrapeo). Pensado para el calendario del frontend.
+      parameters:
+      - description: Fecha a consultar (YYYY-MM-DD)
+        example: "2024-05-15"
+        in: query
+        name: fecha
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/dto.GenericResponse'
+            - properties:
+                data:
+                  $ref: '#/definitions/dto.BCVHistoricoResponse'
+              type: object
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/dto.GenericResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/dto.GenericResponse'
+      summary: Obtener tasa BCV por fecha
+      tags:
+      - Economia
   /api/v1/economia/ucauu:
     get:
       description: Retorna el último valor registrado de la unidad UCAUU
@@ -171,6 +226,30 @@ paths:
       summary: Registrar o Actualizar UCAUU
       tags:
       - Economia
+  /api/v1/territorio/codigos-area:
+    get:
+      description: Retorna la lista de códigos de área telefónicos de Venezuela
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/dto.GenericResponse'
+            - properties:
+                data:
+                  items:
+                    $ref: '#/definitions/dto.CodigoAreaResponse'
+                  type: array
+              type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/dto.GenericResponse'
+      summary: Obtener códigos de área
+      tags:
+      - Territorio
   /api/v1/territorio/estados:
     get:
       description: Retorna la lista de todos los estados de Venezuela
