@@ -48,6 +48,59 @@
                 }
             }
         },
+        "/api/v1/economia/bcv/capturar": {
+            "post": {
+                "description": "Scrapea el BCV y guarda o actualiza USD/EUR del día (Caracas). Requiere header X-Cron-Secret. Pensado para Cloud Scheduler con Cloud Run min=0.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Economia"
+                ],
+                "summary": "Capturar tasas BCV (cron / Cloud Scheduler)",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Secreto compartido con Cloud Scheduler",
+                        "name": "X-Cron-Secret",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/dto.GenericResponse"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/definitions/dto.BCVCaptureResponse"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/dto.GenericResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/dto.GenericResponse"
+                        }
+                    }
+                }
+            }
+        },
         "/api/v1/economia/bcv/historico": {
             "get": {
                 "description": "Retorna USD y EUR del BCV para una fecha específica desde la base de datos (sin scrapeo). Pensado para el calendario del frontend.",
@@ -550,6 +603,27 @@
                 "usd": {
                     "type": "number",
                     "example": 36.4521
+                }
+            }
+        },
+        "dto.BCVCaptureResponse": {
+            "type": "object",
+            "properties": {
+                "eur": {
+                    "type": "number",
+                    "example": 848.8258
+                },
+                "fecha": {
+                    "type": "string",
+                    "example": "2026-07-30"
+                },
+                "status": {
+                    "type": "string",
+                    "example": "updated"
+                },
+                "usd": {
+                    "type": "number",
+                    "example": 745.6371
                 }
             }
         },

@@ -1,5 +1,20 @@
 basePath: /
 definitions:
+  dto.BCVCaptureResponse:
+    properties:
+      eur:
+        example: 848.8258
+        type: number
+      fecha:
+        example: "2026-07-30"
+        type: string
+      status:
+        example: updated
+        type: string
+      usd:
+        example: 745.6371
+        type: number
+    type: object
   dto.BCVHistoricoResponse:
     properties:
       eur:
@@ -143,6 +158,39 @@ paths:
           schema:
             $ref: '#/definitions/dto.GenericResponse'
       summary: Obtener tasas del BCV (Dólar y Euro)
+      tags:
+      - Economia
+  /api/v1/economia/bcv/capturar:
+    post:
+      description: Scrapea el BCV y guarda o actualiza USD/EUR del día (Caracas). Requiere
+        header X-Cron-Secret. Pensado para Cloud Scheduler con Cloud Run min=0.
+      parameters:
+      - description: Secreto compartido con Cloud Scheduler
+        in: header
+        name: X-Cron-Secret
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/dto.GenericResponse'
+            - properties:
+                data:
+                  $ref: '#/definitions/dto.BCVCaptureResponse'
+              type: object
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/dto.GenericResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/dto.GenericResponse'
+      summary: Capturar tasas BCV (cron / Cloud Scheduler)
       tags:
       - Economia
   /api/v1/economia/bcv/historico:

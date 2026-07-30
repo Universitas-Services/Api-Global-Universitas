@@ -15,6 +15,7 @@ type Config struct {
 	DBPort        string
 	DBSSLMode     string
 	BCVDailyHours string
+	BCVCronSecret string
 }
 
 // LoadConfig lee las variables de entorno o carga el archivo .env si existe
@@ -23,7 +24,6 @@ func LoadConfig() *Config {
 
 	hours := getEnv("BCV_DAILY_HOURS", "")
 	if hours == "" {
-		// Compatibilidad con la variable antigua de una sola hora
 		if legacy := getEnv("BCV_DAILY_HOUR", ""); legacy != "" {
 			hours = legacy
 		} else {
@@ -40,6 +40,7 @@ func LoadConfig() *Config {
 		DBPort:        getEnv("DB_PORT", "5432"),
 		DBSSLMode:     getEnv("DB_SSLMODE", "disable"),
 		BCVDailyHours: hours,
+		BCVCronSecret: getEnv("BCV_CRON_SECRET", ""),
 	}
 }
 

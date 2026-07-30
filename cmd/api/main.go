@@ -69,14 +69,14 @@ func main() {
 		// Métodos permitidos (GET, POST, etc.)
 		AllowedMethods: []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"},
 		// Cabeceras que el frontend tiene permitido enviar
-		AllowedHeaders:   []string{"Accept", "Authorization", "Content-Type", "X-CSRF-Token"},
+		AllowedHeaders:   []string{"Accept", "Authorization", "Content-Type", "X-CSRF-Token", "X-Cron-Secret"},
 		ExposedHeaders:   []string{"Link"},
 		AllowCredentials: true,
 		MaxAge:           300, // Tiempo en segundos que el navegador cachea esta regla
 	}))
 
 	// Instanciar Handlers
-	ecoHandler := handlers.NewEconomicHandler(db)
+	ecoHandler := handlers.NewEconomicHandler(db, cfg.BCVCronSecret)
 	terrHandler := handlers.NewTerritoryHandler(db)
 
 	// ==========================================
@@ -89,6 +89,7 @@ func main() {
 			r.Post("/ucauu", ecoHandler.CreateUCAUU)
 			r.Get("/bcv", ecoHandler.GetBCV)
 			r.Get("/bcv/historico", ecoHandler.GetBCVHistorico)
+			r.Post("/bcv/capturar", ecoHandler.CaptureBCV)
 		})
 
 		r.Route("/territorio", func(r chi.Router) {

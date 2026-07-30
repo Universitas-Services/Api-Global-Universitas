@@ -2,6 +2,7 @@ package handlers
 
 import (
 	"api-global/internal/dto"
+	"api-global/internal/jobs"
 	"api-global/internal/repositories"
 	"api-global/internal/scrapers"
 	"api-global/internal/timeutil"
@@ -22,11 +23,12 @@ func init() {
 
 // Estructura para inyectar la base de datos a los endpoints
 type EconomicHandler struct {
-	DB *gorm.DB
+	DB         *gorm.DB
+	CronSecret string
 }
 
-func NewEconomicHandler(db *gorm.DB) *EconomicHandler {
-	return &EconomicHandler{DB: db}
+func NewEconomicHandler(db *gorm.DB, cronSecret string) *EconomicHandler {
+	return &EconomicHandler{DB: db, CronSecret: cronSecret}
 }
 
 // CreateUCAUU godoc
@@ -183,6 +185,50 @@ func (h *EconomicHandler) GetBCVHistorico(w http.ResponseWriter, r *http.Request
 			Fecha: fechaStr,
 			USD:   usd,
 			EUR:   eur,
+		},
+	})
+}
+
+// CaptureBCV godoc
+// @Summary      Capturar tasas BCV (cron / Cloud Scheduler)
+// @Description  Scrapea el BCV y guarda o actualiza USD/EUR del día (Caracas). Requiere header X-Cron-Secret. Pensado para Cloud Scheduler con Cloud Run min=0.
+// @Tags         Economia
+// @Produce      json
+// @Param        X-Cron-Secret header string true "Secreto compartido con Cloud Scheduler"
+// @Success      200  {object}  dto.GenericResponse{data=dto.BCVCaptureResponse}
+// @Failure      401  {object}  dto.GenericResponse
+// @Failure      500  {object}  dto.GenericResponse
+// @Router       /api/v1/economia/bcv/capturar [post]
+func (h *EconomicHandler) CaptureBCV(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
+
+	if h.CronSecret == "" {
+		w.WriteHeader(http.StatusInternalServerError)
+		json.NewEncoder(w).Encode(dto.GenericResponse{Message: "BCV_CRON_SECRET no está configurado en el servidor"})
+		return
+	}
+
+	if r.Header.Get("X-Cron-Secret") != h.CronSecret {
+		w.WriteHeader(http.StatusUnauthorized)
+		json.NewEncoder(w).Encode(dto.GenericResponse{Message: "No autorizado"})
+		return
+	}
+
+	result, err := jobs.CaptureBCV(h.DB)
+	if err != nil {
+		w.WriteHeader(http.StatusInternalServerError)
+		json.NewEncoder(w).Encode(dto.GenericResponse{Message: err.Error()})
+		return
+	}
+
+	w.WriteHeader(http.StatusOK)
+	json.NewEncoder(w).Encode(dto.GenericResponse{
+		Message: result.Message,
+		Data: dto.BCVCaptureResponse{
+			Fecha:  result.Fecha,
+			USD:    result.USD,
+			EUR:    result.EUR,
+			Status: result.Status,
 		},
 	})
 }

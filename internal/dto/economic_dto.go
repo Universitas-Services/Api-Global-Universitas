@@ -41,3 +41,12 @@ type BCVHistoricoResponse struct {
 	USD   float64 `json:"usd" example:"36.4521"`
 	EUR   float64 `json:"eur" example:"39.1234"`
 }
+
+// BCVCaptureResponse es el resultado de una captura forzada (Cloud Scheduler)
+type BCVCaptureResponse struct {
+	Fecha  string  `json:"fecha" example:"2026-07-30"`
+	USD    float64 `json:"usd" example:"745.6371"`
+	EUR    float64 `json:"eur" example:"848.8258"`
+	Status string  `json:"status" example:"updated"` // created | updated | unchanged
+}
+

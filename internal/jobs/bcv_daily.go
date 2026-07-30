@@ -1,6 +1,7 @@
 package jobs
 
 import (
+	"fmt"
 	"log"
 	"sort"
 	"strconv"
@@ -14,8 +15,60 @@ import (
 	"gorm.io/gorm"
 )
 
+// CaptureResult describe el resultado de un scrape+upsert BCV del día (Caracas).
+type CaptureResult struct {
+	Fecha   string  `json:"fecha"`
+	USD     float64 `json:"usd"`
+	EUR     float64 `json:"eur"`
+	Status  string  `json:"status"` // created | updated | unchanged
+	Message string  `json:"message"`
+}
+
+// CaptureBCV scrapea el BCV y hace upsert de USD/EUR para el día civil en Caracas.
+// Pensado para el job interno y para Cloud Scheduler vía HTTP.
+func CaptureBCV(db *gorm.DB) (*CaptureResult, error) {
+	prevUSD, errUSD := repositories.GetIndicadorDeHoy(db, "USD_BCV")
+	prevEUR, errEUR := repositories.GetIndicadorDeHoy(db, "EUR_BCV")
+
+	rates, err := scrapers.ScrapeBCV()
+	if err != nil {
+		return nil, fmt.Errorf("error scrapeando BCV: %w", err)
+	}
+
+	if err := repositories.SaveIndicador(db, "USD_BCV", rates.USD); err != nil {
+		return nil, fmt.Errorf("error guardando USD: %w", err)
+	}
+	if err := repositories.SaveIndicador(db, "EUR_BCV", rates.EUR); err != nil {
+		return nil, fmt.Errorf("error guardando EUR: %w", err)
+	}
+
+	hoy := timeutil.HoyCaracas().Format("2006-01-02")
+	usdSame := errUSD == nil && almostEqual(prevUSD.Valor, rates.USD)
+	eurSame := errEUR == nil && almostEqual(prevEUR.Valor, rates.EUR)
+
+	result := &CaptureResult{
+		Fecha: hoy,
+		USD:   rates.USD,
+		EUR:   rates.EUR,
+	}
+
+	switch {
+	case errUSD != nil || errEUR != nil:
+		result.Status = "created"
+		result.Message = "Tasas BCV creadas para " + hoy
+	case !usdSame || !eurSame:
+		result.Status = "updated"
+		result.Message = "Tasas BCV actualizadas para " + hoy
+	default:
+		result.Status = "unchanged"
+		result.Message = "Tasas BCV sin cambios para " + hoy
+	}
+
+	return result, nil
+}
+
 // StartBCVDailyJob scrapea el BCV a horas fijas America/Caracas (default 07:00 y 17:00).
-// En cada disparo hace upsert: inserta si no hay fila del día, o actualiza el valor si cambió.
+// En Cloud Run con min=0 preferir Cloud Scheduler + POST /bcv/capturar.
 func StartBCVDailyJob(db *gorm.DB, hoursCSV string) {
 	hours := parseHours(hoursCSV)
 	if len(hours) == 0 {
@@ -78,54 +131,21 @@ func nextRun(now time.Time, hours []int, loc *time.Location) time.Time {
 			return candidate
 		}
 	}
-	// Mañana a la primera hora
 	tomorrow := today.Add(24 * time.Hour)
 	return tomorrow.Add(time.Duration(hours[0]) * time.Hour)
 }
 
 func runBCVCapture(db *gorm.DB) {
-	prevUSD, errUSD := repositories.GetIndicadorDeHoy(db, "USD_BCV")
-	prevEUR, errEUR := repositories.GetIndicadorDeHoy(db, "EUR_BCV")
-
-	rates, err := scrapers.ScrapeBCV()
+	result, err := CaptureBCV(db)
 	if err != nil {
-		log.Printf("❌ BCV job: error scrapeando: %v", err)
+		log.Printf("❌ BCV job: %v", err)
 		return
 	}
-
-	if err := repositories.SaveIndicador(db, "USD_BCV", rates.USD); err != nil {
-		log.Printf("❌ BCV job: error guardando USD: %v", err)
-		return
-	}
-	if err := repositories.SaveIndicador(db, "EUR_BCV", rates.EUR); err != nil {
-		log.Printf("❌ BCV job: error guardando EUR: %v", err)
-		return
-	}
-
-	hoy := timeutil.HoyCaracas().Format("2006-01-02")
-	usdSame := errUSD == nil && almostEqual(prevUSD.Valor, rates.USD)
-	eurSame := errEUR == nil && almostEqual(prevEUR.Valor, rates.EUR)
-
-	switch {
-	case errUSD != nil || errEUR != nil:
-		log.Printf("✅ BCV job: tasas creadas para %s USD=%.4f EUR=%.4f", hoy, rates.USD, rates.EUR)
-	case !usdSame || !eurSame:
-		prevU, prevE := 0.0, 0.0
-		if errUSD == nil {
-			prevU = prevUSD.Valor
-		}
-		if errEUR == nil {
-			prevE = prevEUR.Valor
-		}
-		log.Printf("✅ BCV job: tasas actualizadas para %s USD=%.4f→%.4f EUR=%.4f→%.4f",
-			hoy, prevU, rates.USD, prevE, rates.EUR)
-	default:
-		log.Printf("⚡ BCV job: sin cambios para %s USD=%.4f EUR=%.4f", hoy, rates.USD, rates.EUR)
-	}
+	log.Printf("✅ BCV job [%s]: %s USD=%.4f EUR=%.4f", result.Status, result.Message, result.USD, result.EUR)
 }
 
 func almostEqual(a, b float64) bool {
-	const eps = 0.00005 // precisión ~4 decimales
+	const eps = 0.00005
 	if a > b {
 		return a-b < eps
 	}
