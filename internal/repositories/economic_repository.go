@@ -38,28 +38,33 @@ func GetLatestUCAUU(db *gorm.DB) (*models.IndicadorEconomico, error) {
 
 // GetIndicadorDeHoy busca si ya tenemos registrado un indicador para el día civil en Caracas
 func GetIndicadorDeHoy(db *gorm.DB, tipo string) (*models.IndicadorEconomico, error) {
-	var indicador models.IndicadorEconomico
-	hoy := timeutil.HoyCaracas()
+	return GetIndicadorPorFecha(db, tipo, timeutil.HoyCaracas())
+}
 
-	err := db.Where("tipo = ? AND fecha = ?", tipo, hoy).First(&indicador).Error
+// GetIndicadorPorFecha busca un indicador para una fecha concreta (UTC midnight).
+func GetIndicadorPorFecha(db *gorm.DB, tipo string, fecha time.Time) (*models.IndicadorEconomico, error) {
+	var indicador models.IndicadorEconomico
+	dia := fecha.UTC().Truncate(24 * time.Hour)
+
+	err := db.Where("tipo = ? AND fecha = ?", tipo, dia).First(&indicador).Error
 	if err != nil {
 		return nil, err
 	}
 	return &indicador, nil
 }
 
-// SaveIndicador guarda o actualiza un valor económico con la fecha de hoy (Caracas).
+// SaveIndicador guarda o actualiza un valor económico en la fecha indicada.
 // Si ya existe tipo+fecha, actualiza el valor (upsert).
-func SaveIndicador(db *gorm.DB, tipo string, valor float64) error {
-	hoy := timeutil.HoyCaracas()
+func SaveIndicador(db *gorm.DB, tipo string, valor float64, fecha time.Time) error {
+	dia := fecha.UTC().Truncate(24 * time.Hour)
 
 	indicador := models.IndicadorEconomico{
 		Tipo:  tipo,
 		Valor: valor,
-		Fecha: hoy,
+		Fecha: dia,
 	}
 
-	return db.Where(models.IndicadorEconomico{Tipo: tipo, Fecha: hoy}).
+	return db.Where(models.IndicadorEconomico{Tipo: tipo, Fecha: dia}).
 		Assign(models.IndicadorEconomico{Valor: valor}).
 		FirstOrCreate(&indicador).Error
 }

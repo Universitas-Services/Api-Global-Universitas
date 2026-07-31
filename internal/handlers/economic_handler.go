@@ -118,8 +118,20 @@ func (h *EconomicHandler) GetBCV(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 
-		_ = repositories.SaveIndicador(h.DB, "USD_BCV", rates.USD)
-		_ = repositories.SaveIndicador(h.DB, "EUR_BCV", rates.EUR)
+		fechaEfectiva := timeutil.FechaEfectivaBCV()
+		hoy := timeutil.HoyCaracas()
+
+		_ = repositories.SaveIndicador(h.DB, "USD_BCV", rates.USD, fechaEfectiva)
+		_ = repositories.SaveIndicador(h.DB, "EUR_BCV", rates.EUR, fechaEfectiva)
+
+		// Después de las 17:00 la tasa scrapada es del día siguiente; no sustituye "hoy".
+		if !fechaEfectiva.Equal(hoy) {
+			w.WriteHeader(http.StatusInternalServerError)
+			json.NewEncoder(w).Encode(dto.GenericResponse{
+				Message: "No hay tasas BCV para hoy; la captura actual corresponde a " + fechaEfectiva.Format("2006-01-02"),
+			})
+			return
+		}
 
 		w.WriteHeader(http.StatusOK)
 		json.NewEncoder(w).Encode(dto.GenericResponse{
@@ -127,7 +139,7 @@ func (h *EconomicHandler) GetBCV(w http.ResponseWriter, r *http.Request) {
 			Data: dto.BCVResponse{
 				USD:   rates.USD,
 				EUR:   rates.EUR,
-				Fecha: timeutil.HoyCaracas(),
+				Fecha: hoy,
 			},
 		})
 		return
@@ -191,7 +203,7 @@ func (h *EconomicHandler) GetBCVHistorico(w http.ResponseWriter, r *http.Request
 
 // CaptureBCV godoc
 // @Summary      Capturar tasas BCV (cron / Cloud Scheduler)
-// @Description  Scrapea el BCV y guarda o actualiza USD/EUR del día (Caracas). Requiere header X-Cron-Secret. Pensado para Cloud Scheduler con Cloud Run min=0.
+// @Description  Scrapea el BCV y guarda USD/EUR según hora Caracas: antes de 17:00 = hoy; 17:00 o después = mañana. Requiere header X-Cron-Secret.
 // @Tags         Economia
 // @Produce      json
 // @Param        X-Cron-Secret header string true "Secreto compartido con Cloud Scheduler"

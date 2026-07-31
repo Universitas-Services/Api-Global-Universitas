@@ -15,7 +15,7 @@ import (
 	"gorm.io/gorm"
 )
 
-// CaptureResult describe el resultado de un scrape+upsert BCV del día (Caracas).
+// CaptureResult describe el resultado de un scrape+upsert BCV por fecha efectiva.
 type CaptureResult struct {
 	Fecha   string  `json:"fecha"`
 	USD     float64 `json:"usd"`
@@ -24,30 +24,32 @@ type CaptureResult struct {
 	Message string  `json:"message"`
 }
 
-// CaptureBCV scrapea el BCV y hace upsert de USD/EUR para el día civil en Caracas.
-// Pensado para el job interno y para Cloud Scheduler vía HTTP.
+// CaptureBCV scrapea el BCV y hace upsert de USD/EUR según la hora en Caracas:
+// antes de las 17:00 → día actual; a las 17:00 o después → día siguiente.
 func CaptureBCV(db *gorm.DB) (*CaptureResult, error) {
-	prevUSD, errUSD := repositories.GetIndicadorDeHoy(db, "USD_BCV")
-	prevEUR, errEUR := repositories.GetIndicadorDeHoy(db, "EUR_BCV")
+	fecha := timeutil.FechaEfectivaBCV()
+	fechaStr := fecha.Format("2006-01-02")
+
+	prevUSD, errUSD := repositories.GetIndicadorPorFecha(db, "USD_BCV", fecha)
+	prevEUR, errEUR := repositories.GetIndicadorPorFecha(db, "EUR_BCV", fecha)
 
 	rates, err := scrapers.ScrapeBCV()
 	if err != nil {
 		return nil, fmt.Errorf("error scrapeando BCV: %w", err)
 	}
 
-	if err := repositories.SaveIndicador(db, "USD_BCV", rates.USD); err != nil {
+	if err := repositories.SaveIndicador(db, "USD_BCV", rates.USD, fecha); err != nil {
 		return nil, fmt.Errorf("error guardando USD: %w", err)
 	}
-	if err := repositories.SaveIndicador(db, "EUR_BCV", rates.EUR); err != nil {
+	if err := repositories.SaveIndicador(db, "EUR_BCV", rates.EUR, fecha); err != nil {
 		return nil, fmt.Errorf("error guardando EUR: %w", err)
 	}
 
-	hoy := timeutil.HoyCaracas().Format("2006-01-02")
 	usdSame := errUSD == nil && almostEqual(prevUSD.Valor, rates.USD)
 	eurSame := errEUR == nil && almostEqual(prevEUR.Valor, rates.EUR)
 
 	result := &CaptureResult{
-		Fecha: hoy,
+		Fecha: fechaStr,
 		USD:   rates.USD,
 		EUR:   rates.EUR,
 	}
@@ -55,13 +57,13 @@ func CaptureBCV(db *gorm.DB) (*CaptureResult, error) {
 	switch {
 	case errUSD != nil || errEUR != nil:
 		result.Status = "created"
-		result.Message = "Tasas BCV creadas para " + hoy
+		result.Message = "Tasas BCV creadas para " + fechaStr
 	case !usdSame || !eurSame:
 		result.Status = "updated"
-		result.Message = "Tasas BCV actualizadas para " + hoy
+		result.Message = "Tasas BCV actualizadas para " + fechaStr
 	default:
 		result.Status = "unchanged"
-		result.Message = "Tasas BCV sin cambios para " + hoy
+		result.Message = "Tasas BCV sin cambios para " + fechaStr
 	}
 
 	return result, nil

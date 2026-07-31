@@ -45,3 +45,6 @@ vendor/
 # 6. Fuentes Excel de trabajo (se versiona el CSV generado)
 # ==========================================
 historico_divisas.xlsx
+.deploy-cron-secret.txt
+
+.deploy-env.yaml
